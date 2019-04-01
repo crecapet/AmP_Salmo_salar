@@ -10,8 +10,8 @@ metaData.family     = 'Salmonidae';
 metaData.species    = 'Salmo_salar'; 
 metaData.species_en = 'Atlantic_salmon'; 
 metaData.T_typical  = C2K(10); % K, body temp
-metaData.data_0     = {'ab';'aj';'ap';'am';'Lb';'Lj';'Li';'Wwb';'Wwj';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
-metaData.data_1     = {'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
+metaData.data_0     = {'ab';'aj';'ap';'am';'Lh';'Lb';'Lj';'Li';'V0';'Wd0';'Wwb';'Wwj';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
+metaData.data_1     = {'T-ah';'t-L';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
 
 % metaData.COMPLETE = ; % using criteria of LikaKear2011 http://www.debtheory.org/wiki/index.php?title=Completeness
 
@@ -25,13 +25,13 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 
 %% Age at hatching
 
-%data.ah = 115;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Carrick1979';     comment.ah = 'parents from River Kent (Cumbria, northern England)';
+% data.ah = 115;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Carrick1979';     comment.ah = 'parents from River Kent (Cumbria, northern England)';
 %  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
-%data.ah = 258;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Wallace1988';     comment.ah = 'median of five wild Norwegian stocks';
+%data.ah_Norway = 258;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Wallace1988';     comment.ah = 'median of five wild Norwegian stocks';
 %  temp.ah = C2K(0.17);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
 %data.ah = 207;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Wallace1988';     comment.ah = 'median of five wild Norwegian stocks';
 %  temp.ah = C2K(1.00);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
-%data.ah = 144;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Berg2001';     comment.ah = 'parents from river Stjørdalselva (Norway)';
+%data.ah_Norway = 144;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Berg2001';     comment.ah = 'parents from river Stjørdalselva (Norway)';
 %  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
 
 %% Age at first feeding
@@ -40,8 +40,6 @@ data.ab = 196;    units.ab = 'd';    label.ab = 'age at birth';             bibk
 
 %% Age at smoltification
 
-% data.tj = ;    units.tj = 'd';    label.tj = 'time since birth at metamorphosis';           bibkey.tj = '';
-%   temp.tj = C2K();  units.temp.tj = 'K'; label.temp.tj = 'temperature';
 data.aj = 2.265*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.aj = 'Hutchings1998'; comment.aj = 'median of Scottish populations';
   temp.aj = C2K(10);  units.temp.aj = 'K'; label.temp.aj = 'temperature'; comment.temp.aj = 'rough guess - highly variable temperature throughout life';
 % data.aj = 1.04*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
@@ -72,8 +70,8 @@ data.am = 13*365.25;    units.am = 'd';    label.am = 'life span';              
 
 %% Length at hatching
 
-%data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   bibkey.Lh  = 'Peterson1977';  comment.Wwh = 'parents from Dennis Stream (New Brunswick - Canada)';
-%  temp.Lh = C2K(4);  units.temp.Lh = 'K'; label.temp.Lh = 'temperature';
+data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   bibkey.Lh  = 'Peterson1977';  comment.Wwh = 'parents from Dennis Stream (New Brunswick - Canada)';
+% temp.Lh = C2K(4);  units.temp.Lh = 'K'; label.temp.Lh = 'temperature';
 %data.Lh  = 1.90;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   bibkey.Lh  = 'Peterson1977';  comment.Wwh = 'parents from Dennis Stream (New Brunswick - Canada)';
 %  temp.Lh = C2K(6);  units.temp.Lh = 'K'; label.temp.Lh = 'temperature';
 %data.Lh  = 1.92;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   bibkey.Lh  = 'Peterson1977';  comment.Wwh = 'parents from Dennis Stream (New Brunswick - Canada)';
@@ -145,7 +143,7 @@ data.Li  = 95;   units.Li  = 'cm';  label.Li  = 'ultimate total length';   bibke
 % data.Li_F  = 96;   units.Li_F  = 'cm';  label.Li_F  = 'ultimate total length';   bibkey.Li_F  = 'Solberg2014'; comment.Li_F = 'maximum of Norwegian populations maxima - females';
 
 %% Egg volume
-% data.V0 = 0.090;  units.V0 = 'cm^3'; label.V0 = 'egg volume'; bibkey.V0 = 'Berg2001';  comment.V0 = 'parents from river Stjørdalselva (Norway)';
+  data.V0 = 0.090;  units.V0 = 'cm^3'; label.V0 = 'egg volume'; bibkey.V0 = 'Berg2001';  comment.V0 = 'parents from river Stjørdalselva (Norway)';
 
 %% Egg weight
 
@@ -157,13 +155,13 @@ data.Li  = 95;   units.Li  = 'cm';  label.Li  = 'ultimate total length';   bibke
 % data.Ww0 = 0.131;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Srivastava1991';  comment.Ww0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
 % data.Ww0 = 0.104;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Berg2001';  comment.Ww0 = 'before fertilization - parents from river Stjørdalselva (Norway)';
 
-% data.Wd0 = 0.042;  units.Wd0 = 'g'; label.Ww0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-% data.Wd0 = 0.039;  units.Wd0 = 'g'; label.Ww0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-% data.Wd0 = 0.035;  units.Wd0 = 'g'; label.Ww0 = 'dry egg weight'; bibkey.Wd0 = 'Berg2001';  comment.Wd0 = 'before fertilization - parents from river Stjørdalselva (Norway)';
+% data.Wd0 = 0.042;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
+% data.Wd0 = 0.039;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
+  data.Wd0 = 0.035;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Berg2001';  comment.Wd0 = 'before fertilization - parents from river Stjørdalselva (Norway)';
 
 %% Weight at hatching
 
-% data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4°C - parents from River Kent (Cumbria, northern England)';
+ data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4°C - parents from River Kent (Cumbria, northern England)';
 % data.Wwh = 0.117;   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Srivastava1991';  comment.Wwh = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 
 % data.Wdh = 0.0552;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Carrick1979';  comment.Wdh = 'at 4°C - parents from River Kent (Cumbria, northern England)';
@@ -179,9 +177,9 @@ data.Wwb = 0.16;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     bib
 
 %% Weight at smoltification
 
-% data.Wwj = 24;   units.Wwj = 'g';   label.Wwj = 'wet weight at puberty';   bibkey.Wwj = 'Jonsson1998';  comment.Wwj = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
-  data.Wwj = 25;   units.Wwj = 'g';   label.Wwj = 'wet weight at puberty';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
-% data.Wwj = 29;   units.Wwj = 'g';   label.Wwj = 'wet weight at puberty';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
+% data.Wwj = 24;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jonsson1998';  comment.Wwj = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
+  data.Wwj = 25;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
+% data.Wwj = 29;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
 
 %% Weight at maturity (or 1 year before first spawning)
 
@@ -189,15 +187,15 @@ data.Wwb = 0.16;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     bib
 
 %% Weight at spawning
 
-% data.Wwi = ;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = '';
+% data.Wwi = 46800;   units.Wwi = 'g';   label.Wwi = 'ultimate wet weight';     bibkey.Wwi = 'FishBase';
 % data.Wwi_M = 12700;   units.Wwi_M = 'g';   label.Wwi_M = 'ultimate wet weight';     bibkey.Wwi_M = 'Solberg2014'; ; comment.Wwi_M = 'maximum of Norwegian populations maxima - males';
-% data.Wwi_F = 13130;   units.Wwi_F = 'g';   label.Wwi_F = 'ultimate wet weight';     bibkey.Wwi_F = 'Solberg2014'; ; comment.Wwi_F = 'maximum of Norwegian populations maxima - females';
+ data.Wwi_F = 13130;   units.Wwi_F = 'g';   label.Wwi_F = 'ultimate wet weight';     bibkey.Wwi_F = 'Solberg2014'; ; comment.Wwi_F = 'maximum of Norwegian populations maxima - females';
 
 %% Reserve energy in egg (egg = reserve only)
 
 % data.E0 = 1113; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Srivastava1991';   comment.E0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
 % data.E0 = 1028; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Srivastava1991';   comment.E0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-% data.E0 = 757; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Berg2001';   comment.E0 = 'before fertilization - parents from river Stjørdalselva (Norway)';
+  data.E0 = 757; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Berg2001';   comment.E0 = 'before fertilization - parents from river Stjørdalselva (Norway)';
 
 %% Total energy
 
@@ -215,16 +213,16 @@ data.Ri  = 14499/365.25;   units.Ri  = '#/d'; label.Ri  = 'maximum reprod rate';
 
 %% T-ah data
 
-%data.Tah = [ ... % temperature (°C), age at hatching (d)
-%2  155
-%4  126
-%6  84
-%8  64
-%10 50
-%12 38];
-%data.Tah(:,1)=C2K(data.Tah(:,1));
-%units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
-%bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brunswick - Canada)';
+data.Tah = [ ... % temperature (°C), age at hatching (d)
+2  155
+4  126
+6  84
+8  64
+10 50
+12 38];
+data.Tah(:,1)=C2K(data.Tah(:,1));
+units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
+bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brunswick - Canada)';
 
 %data.Tah = [ ... % temperature (°C), age at hatching (d)
 %8  504/8
@@ -1055,46 +1053,46 @@ bibkey.LWw = 'Sutton2000'; comment.LWw = 'Northeast Brook, Newfoundland, Canada 
 
 %% Wd-Ww data
 
-%data.WdWw = [ ... % dry weight (g), wet weight (g) 
-%0.43 2.1
-%0.41 2.1
-%0.43 2.0
-%0.69 3.5
-%2.21	11.8
-%3.43	16.8
-%3.78	18.5
-%2.60	15.2
-%2.94	14.5
-%2.78	15.4
-%2.94	16.5
-%3.26	23.7
-%4.41	21.1
-%3.42	18.9
-%5.33	25.3
-%5.72	27.2];
-%units.WdWw = {'g', 'g'};     label.WdWw = {'dry weight', 'wet weight'};  
-%bibkey.WdWw = 'Sutton2000'; comment.WdWw = 'Northeast Brook, Newfoundland, Canada - cross-sectional';
-
-%data.WdWw = [ ... % dry weight (g), wet weight (g)
-%67.7*(1-0.7) 67.7
-%81.6*(1-0.695) 81.6
-%100.7*(1-0.718)  100.7
-%83.5*(1-0.706) 83.5
-%120.6*(1-0.731)  120.6
-%121.5*(1-0.729)  121.5
-%114.1*(1-0.721)  114.1
-%110.6*(1-0.716)  110.6
-%188.3*(1-0.707)  188.3];
-%units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
-%bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
-  
-%data.WdWw = [ ... % dry weight (g), wet weight (g)
-%81.9*0.303 81.9
-%77.5*0.266 77.5
-%75*0.254 75
-%72.9*0.247 72.9];
-%units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
-%bibkey.WdWw = 'ElMowafi1997'; comment.WdWw = 'probably a domestic strain - under starvation';
+% data.WdWw = [ ... % dry weight (g), wet weight (g) 
+% 0.43 2.1
+% 0.41 2.1
+% 0.43 2.0
+% 0.69 3.5
+% 2.21	11.8
+% 3.43	16.8
+% 3.78	18.5
+% 2.60	15.2
+% 2.94	14.5
+% 2.78	15.4
+% 2.94	16.5
+% 3.26	23.7
+% 4.41	21.1
+% 3.42	18.9
+% 5.33	25.3
+% 5.72	27.2];
+% units.WdWw = {'g', 'g'};     label.WdWw = {'dry weight', 'wet weight'};  
+% bibkey.WdWw = 'Sutton2000'; comment.WdWw = 'Northeast Brook, Newfoundland, Canada - cross-sectional';
+% 
+% data.WdWw = [ ... % dry weight (g), wet weight (g)
+% 67.7*(1-0.7) 67.7
+% 81.6*(1-0.695) 81.6
+% 100.7*(1-0.718)  100.7
+% 83.5*(1-0.706) 83.5
+% 120.6*(1-0.731)  120.6
+% 121.5*(1-0.729)  121.5
+% 114.1*(1-0.721)  114.1
+% 110.6*(1-0.716)  110.6
+% 188.3*(1-0.707)  188.3];
+% units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
+% bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
+%   
+% data.WdWw = [ ... % dry weight (g), wet weight (g)
+% 81.9*0.303 81.9
+% 77.5*0.266 77.5
+% 75*0.254 75
+% 72.9*0.247 72.9];
+% units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
+% bibkey.WdWw = 'ElMowafi1997'; comment.WdWw = 'probably a domestic strain - under starvation';
 
 %% L-WwR data
 
@@ -1528,5 +1526,17 @@ bibkey = 'Einum2000'; type = 'Article'; bib = [ ...
 'number = {2}, ' ...
 'doi = {10.1111/j.0014-3820.2000.tb00064.x}, ' ...
 'pages = {628-639}'];
+metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
+
+%
+bibkey = 'Solberg2014'; type = 'Article'; bib = [ ... 
+'author = {Solberg}, ' ... 
+'year = {2014}, ' ...
+'title = {}, ' ...
+'journal = {}, ' ...
+'volume = {}, ' ...
+'number = {}, ' ...
+'doi = {}, ' ...
+'pages = {}'];
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 

@@ -25,7 +25,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 %   end  
 
   % compute temperature correction factors
-  TC_Tah = tempcorr(Tah(:,1), T_ref, T_A);
+  TC_Tah = tempcorr(C2K(Tah(:,1)), T_ref, T_A);
 % TC_ah = tempcorr(temp.ah, T_ref, T_A);
   TC_ab = tempcorr(temp.ab, T_ref, T_A);
 % TC_tj = tempcorr(temp.tj, T_ref, T_A);
@@ -112,7 +112,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   prdData.Wwb = Ww_b;
   prdData.Wwj = Ww_j;
 % prdData.Wwp = Ww_p;
-  prdData.Wwi_F = Ww_i;
+% prdData.Wwi = Ww_i;
   prdData.E0 = E_0;
   prdData.Ri = RT_i;
   
@@ -138,7 +138,8 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   EWw = (LWw(:,1) * del_M).^3 * (1 + f_LWw * ome); % g, wet weight
 
   % temperature-time at hatching
-  Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
+  a_h = aUL(2,1); aT_h = a_h/ TC_ah;
+  Eah = (t_h/ k_M) ./ TC_Tah; % d, time at hatch
 
   % pack to output
   prdData.tL = ELw;
