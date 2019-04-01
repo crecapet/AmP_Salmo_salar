@@ -9,13 +9,13 @@ metaData.order      = 'Salmoniformes';
 metaData.family     = 'Salmonidae';
 metaData.species    = 'Salmo_salar'; 
 metaData.species_en = 'Atlantic_salmon'; 
-metaData.T_typical  = C2K(20); % K, body temp
+metaData.T_typical  = C2K(10); % K, body temp
 metaData.data_0     = {'ab';'aj';'ap';'am';'Lb';'Lj';'Li';'Wwb';'Wwj';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
 metaData.data_1     = {'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
 
 % metaData.COMPLETE = ; % using criteria of LikaKear2011 http://www.debtheory.org/wiki/index.php?title=Completeness
 
-metaData.author   = {'Charlotte Récapet'};    
+metaData.author   = {'Charlotte Recapet'};    
 metaData.date_subm = [2019 03 13];              
 metaData.email    = {''};            
 metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
