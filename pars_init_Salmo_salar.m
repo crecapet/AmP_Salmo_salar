@@ -25,7 +25,7 @@ par.h_a   = 1e-6;  free.h_a   = 1;   units.h_a   = '1/d^2';    label.h_a   = 'We
 par.s_G   = 1e-4;  free.s_G   = 0;   units.s_G   = '-';        label.s_G   = 'Gompertz stress coefficient';
 
 %% auxiliary parameters
-par.T_A   = 8000;   free.T_A   = 0;    units.T_A = 'K';        label.T_A = 'Arrhenius temperature';
+par.T_A   = 8000;   free.T_A   = 1;    units.T_A = 'K';        label.T_A = 'Arrhenius temperature';
 par.del_M = 0.16;   free.del_M = 1;    units.del_M = '-';      label.del_M = 'shape coefficient';
 
 %% environmental parameters (temperatures are in auxData)
