@@ -10,8 +10,8 @@ metaData.family     = 'Salmonidae';
 metaData.species    = 'Salmo_salar'; 
 metaData.species_en = 'Atlantic_salmon'; 
 metaData.T_typical  = C2K(10); % K, body temp
-metaData.data_0     = {'ab';'aj';'ap';'am';'Lh';'Lb';'Lj';'Li';'V0';'Wd0';'Wwb';'Wwj';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
-metaData.data_1     = {'T-ah';'t-L';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
+metaData.data_0     = {'aj';'ap';'am';'Lh';'Lb';'Lj';'Li';'V0';'Wd0';'Wwb';'Wwj';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
+metaData.data_1     = {'T-ah';'T-ab';'t-L';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
 
 % metaData.COMPLETE = ; % using criteria of LikaKear2011 http://www.debtheory.org/wiki/index.php?title=Completeness
 
@@ -35,8 +35,8 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 %  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
 
 %% Age at first feeding
-data.ab = 196;    units.ab = 'd';    label.ab = 'age at birth';             bibkey.ab = 'Berg2001';     comment.ab = 'parents from river Stjørdalselva (Norway)';
-  temp.ab = C2K(4);  units.temp.ab = 'K'; label.temp.ab = 'temperature';
+% data.ab = 196;    units.ab = 'd';    label.ab = 'age at birth';             bibkey.ab = 'Berg2001';     comment.ab = 'parents from river Stjørdalselva (Norway)';
+%   temp.ab = C2K(4);  units.temp.ab = 'K'; label.temp.ab = 'temperature';
 
 %% Age at smoltification
 
@@ -62,11 +62,11 @@ data.aj = 2.265*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis';
 
 %% Lifespan (mean or maximum?)
 
-% data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'age at puberty';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations';
-%   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
-
-data.am = 13*365.25;    units.am = 'd';    label.am = 'life span';                bibkey.am = 'Flower1935';   comment.am = 'maximum lifespan - females caught in loch Maree on 10th May, 1924';
+data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'age at puberty';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations';
   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
+
+% data.am = 13*365.25;    units.am = 'd';    label.am = 'life span';                bibkey.am = 'Flower1935';   comment.am = 'maximum lifespan - females caught in loch Maree on 10th May, 1924';
+%   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
 
 %% Length at hatching
 
@@ -242,13 +242,13 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 
 %% T-ab data
 
-%data.Tab = [ ... % temperature (°C), age at yolk exhaustion (d)
-%2 238
-%6 177
-%12  64];
-%data.Tab(:,1)=C2K(data.Tab(:,1));
-%units.Tab   = {'K', 'd'};  label.Tab = {'temperature', 'age at birth'}; 
-%bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brunswick - Canada)';
+data.Tab = [ ... % temperature (°C), age at yolk exhaustion (d)
+2 238
+6 177
+12  64];
+data.Tab(:,1)=C2K(data.Tab(:,1));
+units.Tab   = {'K', 'd'};  label.Tab = {'temperature', 'age at birth'}; 
+bibkey.Tab = 'Peterson1977'; comment.Tab = 'parents from Dennis Stream (New Brunswick - Canada)';
 
 %% t-L data
 

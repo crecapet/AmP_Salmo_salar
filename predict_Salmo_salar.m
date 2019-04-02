@@ -26,9 +26,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 
   % compute temperature correction factors
   TC_Tah = tempcorr(Tah(:,1), T_ref, T_A);
-% TC_ah = tempcorr(temp.ah, T_ref, T_A);
-  TC_ab = tempcorr(temp.ab, T_ref, T_A);
-% TC_tj = tempcorr(temp.tj, T_ref, T_A);
+  TC_Tab = tempcorr(Tab(:,1), T_ref, T_A);
   TC_aj = tempcorr(temp.aj, T_ref, T_A);
   TC_ap = tempcorr(temp.ap, T_ref, T_A);
   TC_am = tempcorr(temp.am, T_ref, T_A);
@@ -62,7 +60,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   L_b = L_m * l_b;                  % cm, structural length at birth at f
   Lw_b = L_b/ del_M;                % cm, physical length at birth at f
   Ww_b = L_b^3 * (1 + f * ome);       % g, wet weight at birth at f 
-  aT_b = tau_b/ k_M/ TC_ab;           % d, age at birth at f and T
+% aT_b = tau_b/ k_M/ TC_ab;           % d, age at birth at f and T
 
   % metamorphosis
   L_j = L_m * l_j;                  % cm, structural length at metam
@@ -95,7 +93,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   
   % pack to output
 % prdData.ah = aT_h;
-  prdData.ab = aT_b;
+% prdData.ab = aT_b;
 % prdData.tj = tT_j;
   prdData.aj = aT_j;
 % prdData.tp = tT_p;
@@ -137,10 +135,14 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   % length-weight
   EWw = (LWw(:,1) * del_M).^3 * (1 + f_LWw * ome); % g, wet weight
 
-  % temperature-time at hatching
+  % temperature-age at hatching
   Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
+  
+  % temperature-age at birth
+  Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
 
   % pack to output
   prdData.tL = ELw;
   prdData.LWw = EWw;
   prdData.Tah = Eah;
+  prdData.Tab = Eab;
