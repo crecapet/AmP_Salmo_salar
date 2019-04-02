@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+  <TITLE>Salmo_salar</TITLE>
+  <style>
+    div.prd {
+      width: 50%;
+      float: left;
+    }
+
+    div.par {
+      width: 50%;
+      float: right;
+    }
+
+    p.clear {
+      clear: both;
+    }
+
+    .head {
+      background-color: #FFE7C6
+    }
+
+    .psd {
+      color: blue
+    }
+
+    #prd {
+      border-style: solid hidden solid hidden;
+    }
+
+    #par {
+      border-style: solid hidden solid hidden;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+  </style>
+</HEAD>
+
+<BODY>
+
+  <div class="prd">
+  <h1>Salmo salar</h1>
+  </div>
+
+  <div class="par">
+  <h4>COMPLETE = NaN; MRE =    0.134; SMSE =    0.125 </h4>
+  </div>
+
+  <p class="clear"></p>
+
+  <div class="prd">
+  <h2>Data & predictions</h2>
+  <TABLE id="prd">
+    <TR  class="head"><TH>data</TH> <TH>prd</TH> <TH>RE</TH>  <TH>symbol</TH> <TH>units</TH> <TH>description</TH> </TR>
+    <TR><TD>1335</TD> <TD>1342</TD> <TD>0.005015</TD> <TD>ap</TD> <TD>d</TD> <TD>age at puberty</TD></TR>
+    <TR><TD>1700</TD> <TD>1701</TD> <TD>0.0005566</TD> <TD>am</TD> <TD>d</TD> <TD>life span</TD></TR>
+    <TR><TD>2.09</TD> <TD>2.322</TD> <TD>0.1112</TD> <TD>Lh</TD> <TD>cm</TD> <TD>total length at hatching</TD></TR>
+    <TR><TD>2.825</TD> <TD>2.408</TD> <TD>0.1475</TD> <TD>Lb</TD> <TD>cm</TD> <TD>total length at birth</TD></TR>
+    <TR><TD> 95</TD> <TD>107.5</TD> <TD>0.1314</TD> <TD>Li</TD> <TD>cm</TD> <TD>ultimate total length</TD></TR>
+    <TR><TD>0.09</TD> <TD>0.1525</TD> <TD>0.6949</TD> <TD>V0</TD> <TD>cm^3</TD> <TD>egg volume</TD></TR>
+    <TR><TD>0.035</TD> <TD>0.03051</TD> <TD>0.1283</TD> <TD>Wd0</TD> <TD>g</TD> <TD>dry egg weight</TD></TR>
+    <TR><TD>0.1488</TD> <TD>0.131</TD> <TD>0.1193</TD> <TD>Wwh</TD> <TD>g</TD> <TD>wet weight at hatching</TD></TR>
+    <TR><TD>0.16</TD> <TD>0.1462</TD> <TD>0.08653</TD> <TD>Wwb</TD> <TD>g</TD> <TD>wet weight at birth</TD></TR>
+    <TR><TD>1.313e+04</TD> <TD>1.299e+04</TD> <TD>0.01073</TD> <TD>Wwi_F</TD> <TD>g</TD> <TD>ultimate wet weight</TD></TR>
+    <TR><TD>757</TD> <TD>702.1</TD> <TD>0.07255</TD> <TD>E0</TD> <TD>J</TD> <TD>egg reserve energy</TD></TR>
+    <TR><TD>39.7</TD> <TD>38.26</TD> <TD>0.03624</TD> <TD>Ri</TD> <TD>#/d</TD> <TD>maximum reprod rate</TD></TR>
+    <TR><TD colspan="2">see figure</TD> <TD>0.2703</TD> <TD>Tah</TD> <TD colspan="2">temperature, <font color="blue"><i>vs.</i></font> age at hatching</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.229</TD> <TD>Tab</TD> <TD colspan="2">temperature, <font color="blue"><i>vs.</i></font> age at birth</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.06056</TD> <TD>tL</TD> <TD colspan="2">time since birth, <font color="blue"><i>vs.</i></font> total length</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.09733</TD> <TD>LWw_parrs</TD> <TD colspan="2">total length, <font color="blue"><i>vs.</i></font> wet weight</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.07697</TD> <TD>LWw_spawners</TD> <TD colspan="2">total length, <font color="blue"><i>vs.</i></font> wet weight</TD>
+    <TR class="psd"><TD>0.02</TD> <TD>0.02248</TD> <TD>0.1238</TD> <TD>psd.v</TD> <TD>cm/d</TD> <TD>energy conductance</TD></TR>
+    <TR class="psd"><TD>0.8</TD> <TD>0.5066</TD> <TD>0.3667</TD> <TD>psd.kap</TD> <TD>-</TD> <TD>allocation fraction to soma</TD></TR>
+    <TR class="psd"><TD>0.95</TD> <TD>0.95</TD> <TD>  0</TD> <TD>psd.kap_R</TD> <TD>-</TD> <TD>reproduction efficiency</TD></TR>
+    <TR class="psd"><TD> 18</TD> <TD>366.4</TD> <TD>19.36</TD> <TD>psd.p_M</TD> <TD>J/d.cm^3</TD> <TD>vol-spec som maint</TD></TR>
+    <TR class="psd"><TD>0.002</TD> <TD>0.002</TD> <TD>  0</TD> <TD>psd.k_J</TD> <TD>1/d</TD> <TD>maturity maint rate coefficient</TD></TR>
+    <TR class="psd"><TD>0.8</TD> <TD>0.8005</TD> <TD>0.0006232</TD> <TD>psd.kap_G</TD> <TD>-</TD> <TD>growth efficiency</TD></TR>
+  </TABLE>
+  </div>
+
+  <div class="par">
+  <h2>std parameters at 20.0&deg;C</h2>
+  <TABLE id="par">
+    <TR class="head"><TH>symbol</TH> <TH>units</TH> <TH>value</TH>  <TH>free</TH> <TH>description</TH> </TR>
+    <TR><TD>T_ref</TD> <TD>K</TD> <TD>293.1</TD> <TD>0</TD> <TD>Reference temperature</TD></TR>
+    <TR><TD>z</TD> <TD>-</TD> <TD>9.328</TD> <TD>1</TD> <TD>zoom factor</TD></TR>
+    <TR><TD>F_m</TD> <TD>l/d.cm^2</TD> <TD>6.5</TD> <TD>0</TD> <TD>{F_m}, max spec searching rate</TD></TR>
+    <TR><TD>kap_X</TD> <TD>-</TD> <TD>0.8</TD> <TD>0</TD> <TD>digestion efficiency of food to reserve</TD></TR>
+    <TR><TD>kap_P</TD> <TD>-</TD> <TD>0.1</TD> <TD>0</TD> <TD>faecation efficiency of food to faeces</TD></TR>
+    <TR><TD>v</TD> <TD>cm/d</TD> <TD>0.02248</TD> <TD>1</TD> <TD>energy conductance</TD></TR>
+    <TR><TD>kap</TD> <TD>-</TD> <TD>0.5066</TD> <TD>1</TD> <TD>allocation fraction to soma</TD></TR>
+    <TR><TD>kap_R</TD> <TD>-</TD> <TD>0.95</TD> <TD>0</TD> <TD>reproduction efficiency</TD></TR>
+    <TR><TD>p_M</TD> <TD>J/d.cm^3</TD> <TD>366.4</TD> <TD>1</TD> <TD>[p_M], vol-spec somatic maint</TD></TR>
+    <TR><TD>p_T</TD> <TD>J/d.cm^2</TD> <TD>  0</TD> <TD>0</TD> <TD>{p_T}, surf-spec somatic maint</TD></TR>
+    <TR><TD>k_J</TD> <TD>1/d</TD> <TD>0.002</TD> <TD>0</TD> <TD>maturity maint rate coefficient</TD></TR>
+    <TR><TD>E_G</TD> <TD>J/cm^3</TD> <TD>5227</TD> <TD>1</TD> <TD>[E_G], spec cost for structure</TD></TR>
+    <TR><TD>E_Hh</TD> <TD>J</TD> <TD>19.02</TD> <TD>1</TD> <TD>maturity at hatch</TD></TR>
+    <TR><TD>E_Hb</TD> <TD>J</TD> <TD>21.41</TD> <TD>1</TD> <TD>maturity at birth</TD></TR>
+    <TR><TD>E_Hp</TD> <TD>J</TD> <TD>4.251e+05</TD> <TD>1</TD> <TD>maturity at puberty</TD></TR>
+    <TR><TD>h_a</TD> <TD>1/d^2</TD> <TD>1.523e-05</TD> <TD>1</TD> <TD>Weibull aging acceleration</TD></TR>
+    <TR><TD>s_G</TD> <TD>-</TD> <TD>0.0001</TD> <TD>0</TD> <TD>Gompertz stress coefficient</TD></TR>
+    <TR><TD>T_A</TD> <TD>K</TD> <TD>1.036e+04</TD> <TD>1</TD> <TD>Arrhenius temperature</TD></TR>
+    <TR><TD>del_M</TD> <TD>-</TD> <TD>0.06075</TD> <TD>1</TD> <TD>shape coefficient</TD></TR>
+    <TR><TD>f</TD> <TD>-</TD> <TD>0.7</TD> <TD>0</TD> <TD>scaled functional response for 0-var data</TD></TR>
+    <TR><TD>f_Tah</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for temperature-age at hatching data</TD></TR>
+    <TR><TD>f_Tab</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for temperature-age at hatching data</TD></TR>
+    <TR><TD>f_tL</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for time-length data</TD></TR>
+    <TR><TD>f_LWw_parrs</TD> <TD>-</TD> <TD>0.7</TD> <TD>0</TD> <TD>scaled functional response for length-weight data</TD></TR>
+    <TR><TD>f_LWw_spawners</TD> <TD>-</TD> <TD>0.7</TD> <TD>0</TD> <TD>scaled functional response for length-weight data</TD></TR>
+  </TABLE>
+  </div>
+
+</BODY>
+</HTML>

@@ -24,6 +24,7 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 %% zero-variate data
 
 %% Age at hatching
+% T-ah data are used instead.
 
 % data.ah = 115;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Carrick1979';     comment.ah = 'parents from River Kent (Cumbria, northern England)';
 %  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
@@ -35,6 +36,8 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 %  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
 
 %% Age at first feeding
+% T-ab data are used instead.
+
 % data.ab = 196;    units.ab = 'd';    label.ab = 'age at birth';             bibkey.ab = 'Berg2001';     comment.ab = 'parents from river Stjørdalselva (Norway)';
 %   temp.ab = C2K(4);  units.temp.ab = 'K'; label.temp.ab = 'temperature';
 
@@ -62,7 +65,7 @@ data.aj = 2.265*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis';
 
 %% Lifespan (mean or maximum?)
 
-data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'age at puberty';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations';
+data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'life span';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations';
   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
 
 % data.am = 13*365.25;    units.am = 'd';    label.am = 'life span';                bibkey.am = 'Flower1935';   comment.am = 'maximum lifespan - females caught in loch Maree on 10th May, 1924';
@@ -537,7 +540,7 @@ bibkey.tL = 'Einum2000'; comment.tL = 'Imsa River (Norway)';
 
 %% L-W data
 
-data.LWw = [ ... % fork length (cm), wet weight (g) (parrs)
+data.LWw_parrs = [ ... % fork length (cm), wet weight (g)
 5.5	2.1
 5.6	2.1
 5.7	2.0
@@ -765,8 +768,8 @@ data.LWw = [ ... % fork length (cm), wet weight (g) (parrs)
 12.9	18.9
 13.5	25.3
 14.4	27.2];   
-units.LWw = {'cm', 'g'};     label.LWw = {'total length', 'wet weight'}; 
-bibkey.LWw = 'Sutton2000'; comment.LWw = 'Northeast Brook, Newfoundland, Canada - cross-sectional';
+units.LWw_parrs = {'cm', 'g'};     label.LWw_parrs = {'total length', 'wet weight'}; 
+bibkey.LWw_parrs = 'Sutton2000'; comment.LWw_parrs = 'Northeast Brook, Newfoundland, Canada - cross-sectional';
 
 %data.LWw = [ ... % fork length (cm), wet weight (g)
 %19.7 67.7
@@ -781,15 +784,15 @@ bibkey.LWw = 'Sutton2000'; comment.LWw = 'Northeast Brook, Newfoundland, Canada 
 %units.LWw   = {'cm', 'g'};  label.LWw = {'total length', 'wet weight'};  
 %bibkey.LWw = 'Rottiers1993'; comment.LWw = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
 
-%data.LWw_Norway = [ ... % fork length (cm), wet weight (g)
-%60 1500
-%68 3500
-%80 6000
-%84 6000
-%85 6000
-%92 8000];
-%units.LWw_Norway   = {'cm', 'g'};  label.LWw_Norway = {'total length', 'wet weight'};  
-%bibkey.LWw_Norway = 'Berg2001'; comment.LWw_Norway = 'females from river Stjørdalselva (Norway)';
+data.LWw_spawners = [ ... % fork length (cm), wet weight (g)
+60 1500
+68 3500
+80 6000
+84 6000
+85 6000
+92 8000];
+units.LWw_spawners   = {'cm', 'g'};  label.LWw_spawners = {'total length', 'wet weight'};  
+bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stjørdalselva (Norway)';
 
 %data.LWw_Norway = [ ... % fork length (cm), wet weight (g)
 %2.9  0.17
@@ -1052,6 +1055,8 @@ bibkey.LWw = 'Sutton2000'; comment.LWw = 'Northeast Brook, Newfoundland, Canada 
 %bibkey.LWd = 'Rottiers1993'; comment.LWd = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
 
 %% Wd-Ww data
+% These data are not to be used unless we suspect d_V = Wd/Ww might subtantially
+% differ from 0.2.
 
 % data.WdWw = [ ... % dry weight (g), wet weight (g) 
 % 0.43 2.1
@@ -1095,40 +1100,42 @@ bibkey.LWw = 'Sutton2000'; comment.LWw = 'Northeast Brook, Newfoundland, Canada 
 % bibkey.WdWw = 'ElMowafi1997'; comment.WdWw = 'probably a domestic strain - under starvation';
 
 %% L-WwR data
-
-%data.LWwR = [ ... % total length (cm), ovary wet weight (g) 
-%6.1	0.019
-%6.4	0.018
-%6.7	0.020
-%7.1	0.029
-%7.2	0.026
-%7.4	0.030
-%7.6	0.028
-%7.8	0.034
-%8.4	0.036
-%8.4	0.037
-%8.4	0.037
-%8.4	0.037
-%9.5	0.042
-%9.5	0.035
-%10.2	0.049
-%10.2	0.041
-%10.3	0.052
-%10.3	0.046
-%10.4	0.049
-%10.5	0.049
-%10.5	0.043
-%10.6	0.038
-%10.7	0.048
-%10.7	0.048
-%10.9	0.055
-%11.1	0.056
-%11.2	0.052
-%11.4	0.057
-%11.5	0.050];
-%units.LWwR = {'cm', 'g'};     label.LWwR = {'total length', 'gonad wet weight'};  
-%bibkey.LWwR = 'Adams1989'; comment.LWwR = 'Scottish stock - exact origin unknown - females';
-%
+ 
+% Ovary weight is here measured on immature female parrs, so is rather
+% indicative on organs' growth than investment in reproduction.
+% data.LWwR = [ ... % total length (cm), ovary wet weight (g) 
+% 6.1	0.019
+% 6.4	0.018
+% 6.7	0.020
+% 7.1	0.029
+% 7.2	0.026
+% 7.4	0.030
+% 7.6	0.028
+% 7.8	0.034
+% 8.4	0.036
+% 8.4	0.037
+% 8.4	0.037
+% 8.4	0.037
+% 9.5	0.042
+% 9.5	0.035
+% 10.2	0.049
+% 10.2	0.041
+% 10.3	0.052
+% 10.3	0.046
+% 10.4	0.049
+% 10.5	0.049
+% 10.5	0.043
+% 10.6	0.038
+% 10.7	0.048
+% 10.7	0.048
+% 10.9	0.055
+% 11.1	0.056
+% 11.2	0.052
+% 11.4	0.057
+% 11.5	0.050];
+% units.LWwR = {'cm', 'g'};     label.LWwR = {'total length', 'gonad wet weight'};  
+% bibkey.LWwR = 'Adams1989'; comment.LWwR = 'Scottish stock - exact origin unknown - females';
+ 
 %% L-N data
 
 %data.LN = [ ... % total length (cm), number of eggs (#) 

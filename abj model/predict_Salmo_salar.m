@@ -131,18 +131,20 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   t_ji = tL(tL(:,1) >= tau_j,1); % selects times after metamorphosis
   EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tau_j)); % cm, expected length at time
   ELw = [EL_bj; EL_ji]; % catenate lengths
-
+  
   % length-weight
-  EWw = (LWw(:,1) * del_M).^3 * (1 + f_LWw * ome); % g, wet weight
+  EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight
+  EWw_spawners = (LWw_spawners(:,1) * del_M).^3 * (1 + f_LWw_spawners * ome); % g, wet weight
 
   % temperature-age at hatching
   Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
   
   % temperature-age at birth
   Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
-
+  
   % pack to output
   prdData.tL = ELw;
-  prdData.LWw = EWw;
+  prdData.LWw_parrs = EWw_parrs;
+  prdData.LWw_spawners = EWw_spawners;
   prdData.Tah = Eah;
   prdData.Tab = Eab;
