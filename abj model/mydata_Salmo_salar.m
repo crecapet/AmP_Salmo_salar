@@ -10,8 +10,8 @@ metaData.family     = 'Salmonidae';
 metaData.species    = 'Salmo_salar'; 
 metaData.species_en = 'Atlantic_salmon'; 
 metaData.T_typical  = C2K(10); % K, body temp
-metaData.data_0     = {'aj';'ap';'am';'Lh';'Lb';'Lj';'Li';'V0';'Wd0';'Wwb';'Wwj';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
-metaData.data_1     = {'T-ah';'T-ab';'t-L';'t-Wwe';'t-WwVe';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
+metaData.data_0     = {'as';'ap';'am';'Lh';'Lb';'Ls';'Li';'V0';'Wd0';'Wwb';'Wws';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
+metaData.data_1     = {'T-ah';'T-ab';'t-L_f';'t-Wwe_T';'t-WwVe_T';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
 
 % metaData.COMPLETE = ; % using criteria of LikaKear2011 http://www.debtheory.org/wiki/index.php?title=Completeness
 
@@ -43,14 +43,14 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 
 %% Age at smoltification
 
-data.aj = 2.265*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.aj = 'Hutchings1998'; comment.aj = 'median of Scottish populations';
-  temp.aj = C2K(10);  units.temp.aj = 'K'; label.temp.aj = 'temperature'; comment.temp.aj = 'rough guess - highly variable temperature throughout life';
-% data.aj = 1.04*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
-% data.aj = 3.03*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
-% data.aj = 2.6*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Jutila2006'; comment.tj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
+% data.as = 2.265*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.as = 'Hutchings1998'; comment.as = 'median of Scottish populations';
+%   temp.as = C2K(10);  units.temp.as = 'K'; label.temp.as = 'temperature'; comment.temp.as = 'rough guess - highly variable temperature throughout life';
+% data.as = 1.04*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
+% data.as = 3.03*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
+% data.as = 2.6*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Jutila2006'; comment.tj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
 
 %% Age at maturity (or age at first spawning minus 1 year)
 
@@ -127,11 +127,11 @@ data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   
 
 %% Length at smoltification
 
-data.Lj  = 12;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'median of Scottish populations';
-% data.Lj  = 18.7;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'Nivelle';
-% data.Lj  = 12.5;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'median of Icelandic populations';
-% data.Lj  = 15.5;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Jutila2006'; comment.Lj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1991';
-% data.Lj  = 14.7;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Jutila2006'; comment.Lj = 'Simojoki (Baltic Sea, Finland) - mean from 1992 to 2004';
+% data.Ls  = 12;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'median of Scottish populations';
+% data.Ls  = 18.7;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'Nivelle';
+% data.Ls  = 12.5;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'median of Icelandic populations';
+% data.Ls  = 15.5;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1991';
+% data.Ls  = 14.7;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1992 to 2004';
 
 %% Length at maturity (or 1 year before first spawning)
 
@@ -180,9 +180,9 @@ data.Wwb = 0.16;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     bib
 
 %% Weight at smoltification
 
-% data.Wwj = 24;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jonsson1998';  comment.Wwj = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
-  data.Wwj = 25;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
-% data.Wwj = 29;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
+% data.Wws = 24;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jonsson1998';  comment.Wws = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
+% data.Wws = 25;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jutila2006';  comment.Wws = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
+% data.Wws = 29;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jutila2006';  comment.Wws = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
 
 %% Weight at maturity (or 1 year before first spawning)
 
@@ -305,6 +305,41 @@ data.tL = [ ... % time since emergence (d), fork length (cm)
 units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};  
 temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4°C to 14.1°C throughout the experiment';
 bibkey.tL = 'Einum2000'; comment.tL = 'Imsa River (Norway)';
+
+% data.tL_f0 = [ ... % time (d), fork length (cm) without food
+% 0 20.9
+% 28 21.3];
+% units.tL_f0   = {'d', 'cm'};  label.tL_f0 = {'time', 'total length'};  
+% temp.tL_f0    = C2K(7.3);  units.temp.tL_f0 = 'K'; label.temp.tL_f0 = 'temperature';
+% bibkey.tL_f0 = 'Stefansson2009'; comment.tL_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+
+% data.tL_f25 = [ ... % time (d), fork length (cm) at 25% ad libitum food
+% 0 20.3
+% 28 20.9];
+% units.tL_f25   = {'d', 'cm'};  label.tL_f25 = {'time', 'total length'};  
+% temp.tL_f25    = C2K(7.3);  units.temp.tL_f25 = 'K'; label.temp.tL_f25 = 'temperature';
+% bibkey.tL_f25 = 'Stefansson2009'; comment.tL_f25 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tL_f50 = [ ... % time (d), fork length (cm) at 50% ad libitum food
+% 0 20.3
+% 28 21.4];
+% units.tL_f50   = {'d', 'cm'};  label.tL_f50 = {'time', 'total length'};  
+% temp.tL_f50    = C2K(7.3);  units.temp.tL_f50 = 'K'; label.temp.tL_f50 = 'temperature';
+% bibkey.tL_f50 = 'Stefansson2009'; comment.tL_f50 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tL_f75 = [ ... % time (d), fork length (cm) at 75% ad libitum food
+% 0 20.6
+% 28 21.9];
+% units.tL_f75   = {'d', 'cm'};  label.tL_f75 = {'time', 'total length'};  
+% temp.tL_f75    = C2K(7.3);  units.temp.tL_f75 = 'K'; label.temp.tL_f75 = 'temperature';
+% bibkey.tL_f75 = 'Stefansson2009'; comment.tL_f75 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tL_f100 = [ ... % time (d), fork length (cm) with ad libitum food
+% 0 20.6
+% 28 22.3];
+% units.tL_f100   = {'d', 'cm'};  label.tL_f100 = {'time', 'total length'};  
+% temp.tL_f100    = C2K(7.3);  units.temp.tL_f100 = 'K'; label.temp.tL_f100 = 'temperature';
+% bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
 
 %% t-W data in embryos
 
@@ -538,6 +573,41 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %units.tWd   = {'d', 'g'};  label.tWd = {'starvation time', 'dry weight'};  
 %temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature';
 %bibkey.tWd = 'ElMowafi1997'; comment.tWd = 'probably a domestic strain';
+
+% data.tWw_f0 = [ ... % time (d), wet weight (g) without food
+% 0 89.4
+% 28 83.8];
+% units.tWw_f0   = {'d', 'g'};  label.tWw_f0 = {'time', 'wet weight'};  
+% temp.tWw_f0    = C2K(7.3);  units.temp.tWw_f0 = 'K'; label.temp.tWw_f0 = 'temperature';
+% bibkey.tWw_f0 = 'Stefansson2009'; comment.tWw_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+
+% data.tWw_f25 = [ ... % time (d), wet weight (g) at 25% ad libitum food
+% 0 81.0
+% 28 87.0];
+% units.tWw_f25   = {'d', 'g'};  label.tWw_f25 = {'time', 'wet weight'};  
+% temp.tWw_f25    = C2K(7.3);  units.temp.tWw_f25 = 'K'; label.temp.tWw_f25 = 'temperature';
+% bibkey.tWw_f25 = 'Stefansson2009'; comment.tWw_f25 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tWw_f50 = [ ... % time (d), wet weight (g) at 50% ad libitum food
+% 0 82.4
+% 28 97.7];
+% units.tWw_f50   = {'d', 'g'};  label.tWw_f50 = {'time', 'wet weight'};  
+% temp.tWw_f50    = C2K(7.3);  units.temp.tWw_f50 = 'K'; label.temp.tWw_f50 = 'temperature';
+% bibkey.tWw_f50 = 'Stefansson2009'; comment.tWw_f50 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tWw_f75 = [ ... % time (d), wet weight (g) at 75% ad libitum food
+% 0 87.0
+% 28 107.9];
+% units.tWw_f75   = {'d', 'g'};  label.tWw_f75 = {'time', 'wet weight'};  
+% temp.tWw_f75    = C2K(7.3);  units.temp.tWw_f75 = 'K'; label.temp.tWw_f75 = 'temperature';
+% bibkey.tWw_f75 = 'Stefansson2009'; comment.tWw_f75 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+% 
+% data.tWw_f100 = [ ... % time (d), wet weight (g) with ad libitum food
+% 0 85.2
+% 28 115.8];
+% units.tWw_f100   = {'d', 'g'};  label.tWw_f100 = {'time', 'wet weight'};  
+% temp.tWw_f100    = C2K(7.3);  units.temp.tWw_f100 = 'K'; label.temp.tWw_f100 = 'temperature';
+% bibkey.tWw_f100 = 'Stefansson2009'; comment.tWw_f100 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
 
 %% L-W data
 
@@ -1139,108 +1209,108 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
  
 % L-N data
 
-data.LN = [ ... % total length (cm), number of eggs (#) 
-65.2	8249
-70.3	7422
-70.7	6763
-68.1	7177
-67.2	7419
-67.1	6516
-67.8	6239
-69.7	6380
-69.1	5893
-69.3	5477
-70.9	5687
-67.7	4052
-69.1	4505
-67.8	4400
-66.8	4503
-67.3	4850
-66.6	4919
-66.4	5162
-65.9	5473
-65.2	5681
-65.8	5959
-63.7	6686
-62.6	5782
-64.6	5264
-63.9	5055
-65.2	5021
-65.0	4709
-64.5	4222
-63.9	4569
-63.3	4776
-61.6	4948
-62.4	4775
-61.8	4427
-60.2	4807
-59.4	4633
-66.0	3877
-65.1	3737
-64.2	3528
-65.7	3460
-66.9	3427
-65.7	2870
-63.6	2555
-57.2	1472
-59.1	2446
-57.9	2549
-54.5	3378
-56.5	3172
-58.8	3105
-62.0	3248
-62.1	3977
-59.8	3384
-61.1	3663
-57.5	3381
-58.2	3660
-57.3	3936
-57.3	4110
-57.0	4422
-59.1	4008
-59.3	3730
-60.4	3836
-60.4	4217
-60.9	4565
-69.2	4158
-90.0	14456
-89.5	12130
-88.0	11573
-89.0	11261
-91.1	10535
-90.6	9875
-83.1	11741
-83.5	10977
-82.1	11045
-82.1	10872
-82.1	10768
-85.4	9869
-83.5	9728
-84.0	9104
-85.1	9001
-79.0	9549
-79.2	9029
-78.1	8750
-77.8	8368
-76.7	8297
-81.6	8407
-83.1	8339
-83.7	7958
-82.5	7957
-79.8	8370
-79.2	7988
-80.3	7711
-77.8	7222
-77.2	7222
-81.6	6672
-85.0	6085
-86.6	5011
-73.7	5656
-71.6	3675
-73.7	3573
-76.8	3126];   
-units.LN = {'cm', '#'};     label.LN = {'total length', 'number of eggs'};  
-bibkey.LN = 'Thorpe1984';    comment.LN = 'River Almond (Scotland)';
+% data.LN = [ ... % total length (cm), number of eggs (#) 
+% 65.2	8249
+% 70.3	7422
+% 70.7	6763
+% 68.1	7177
+% 67.2	7419
+% 67.1	6516
+% 67.8	6239
+% 69.7	6380
+% 69.1	5893
+% 69.3	5477
+% 70.9	5687
+% 67.7	4052
+% 69.1	4505
+% 67.8	4400
+% 66.8	4503
+% 67.3	4850
+% 66.6	4919
+% 66.4	5162
+% 65.9	5473
+% 65.2	5681
+% 65.8	5959
+% 63.7	6686
+% 62.6	5782
+% 64.6	5264
+% 63.9	5055
+% 65.2	5021
+% 65.0	4709
+% 64.5	4222
+% 63.9	4569
+% 63.3	4776
+% 61.6	4948
+% 62.4	4775
+% 61.8	4427
+% 60.2	4807
+% 59.4	4633
+% 66.0	3877
+% 65.1	3737
+% 64.2	3528
+% 65.7	3460
+% 66.9	3427
+% 65.7	2870
+% 63.6	2555
+% 57.2	1472
+% 59.1	2446
+% 57.9	2549
+% 54.5	3378
+% 56.5	3172
+% 58.8	3105
+% 62.0	3248
+% 62.1	3977
+% 59.8	3384
+% 61.1	3663
+% 57.5	3381
+% 58.2	3660
+% 57.3	3936
+% 57.3	4110
+% 57.0	4422
+% 59.1	4008
+% 59.3	3730
+% 60.4	3836
+% 60.4	4217
+% 60.9	4565
+% 69.2	4158
+% 90.0	14456
+% 89.5	12130
+% 88.0	11573
+% 89.0	11261
+% 91.1	10535
+% 90.6	9875
+% 83.1	11741
+% 83.5	10977
+% 82.1	11045
+% 82.1	10872
+% 82.1	10768
+% 85.4	9869
+% 83.5	9728
+% 84.0	9104
+% 85.1	9001
+% 79.0	9549
+% 79.2	9029
+% 78.1	8750
+% 77.8	8368
+% 76.7	8297
+% 81.6	8407
+% 83.1	8339
+% 83.7	7958
+% 82.5	7957
+% 79.8	8370
+% 79.2	7988
+% 80.3	7711
+% 77.8	7222
+% 77.2	7222
+% 81.6	6672
+% 85.0	6085
+% 86.6	5011
+% 73.7	5656
+% 71.6	3675
+% 73.7	3573
+% 76.8	3126];   
+% units.LN = {'cm', '#'};     label.LN = {'total length', 'number of eggs'};  
+% bibkey.LN = 'Thorpe1984';    comment.LN = 'River Almond (Scotland)';
 
 %% Proximal composition data
 %data.tLipid = [ ...    % time since first feeding (d), lipid (g)

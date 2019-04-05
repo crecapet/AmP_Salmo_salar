@@ -1,6 +1,6 @@
 close all;
 addpath(genpath('C:/Users/crecapet/Documents/Recherche/Modelisation/DEB/DEBtool_M-master'))
-addpath(genpath('C:/Users/crecapet/Documents/Recherche/Modelisation/DEB/DEB school 2019/Salmo_salar/AmP_Salmo_salar'))
+addpath(genpath('C:/Users/crecapet/Documents/Recherche/Modelisation/DEB/DEB school 2019/Salmo_salar/AmP_Salmo_salar/abj model'))
 global pets
 
 pets = {'Salmo_salar'};
@@ -10,7 +10,7 @@ pets = {'Salmo_salar'};
 % manual: http://www.debtheory.org/wiki/index.php?title=Run_file
 
 estim_options('default'); 
-estim_options('max_step_number',5e4); 
+estim_options('max_step_number',5e3); 
 estim_options('max_fun_evals',5e3);  
 
 estim_options('pars_init_method', 1);
