@@ -4,9 +4,19 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   cPar = parscomp_st(par); vars_pull(par); 
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
-  if E_Hh > E_Hb
-      info = 0; prdData = []; return
-  end
+      filterChecks = E_Hh > E_Hb;
+%                      f1>1 || f1 <0 || ...
+%                      f2>1 || f2 <0 || ...
+%                      f3>1 || f3 <0 || ...
+%                      s_shrink < 0 || s_shrink > 1e6 || ...
+%                      L_init < 0 || L_init > L_m * 43 || L_init^3 > 0.9 * 0.35 || ...
+%                      E_R_init < 0 || w_E/ mu_E/ d_E * E_R_init > 0.8 * 0.35; 
+  
+  if filterChecks  
+    info = 0;
+    prdData = {};
+    return;
+  end  
 
 %   % customized filters for allowable parameters of the standard DEB model (std)
 %   % for other models consult the appropriate filter function.
@@ -141,6 +151,9 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   
   % temperature-age at birth
   Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
+  
+  % L-N data for females
+  
   
   % pack to output
   prdData.tL = ELw;

@@ -4,9 +4,19 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   cPar = parscomp_st(par); vars_pull(par); 
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
-  if E_Hh > E_Hb
-      info = 0; prdData = []; return
-  end
+      filterChecks = E_Hh > E_Hb;
+%                      f1>1 || f1 <0 || ...
+%                      f2>1 || f2 <0 || ...
+%                      f3>1 || f3 <0 || ...
+%                      s_shrink < 0 || s_shrink > 1e6 || ...
+%                      L_init < 0 || L_init > L_m * 43 || L_init^3 > 0.9 * 0.35 || ...
+%                      E_R_init < 0 || w_E/ mu_E/ d_E * E_R_init > 0.8 * 0.35; 
+  
+  if filterChecks  
+    info = 0;
+    prdData = {};
+    return;
+  end  
 
 %   % customized filters for allowable parameters of the standard DEB model (std)
 %   % for other models consult the appropriate filter function.
@@ -131,9 +141,10 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   t_ji = tL(tL(:,1) >= tau_j,1); % selects times after metamorphosis
   EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tau_j)); % cm, expected length at time
   ELw = [EL_bj; EL_ji]; % catenate lengths
-
+  
   % length-weight
-  EWw = (LWw(:,1) * del_M).^3 * (1 + f_LWw * ome); % g, wet weight
+  EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight
+  EWw_spawners = (LWw_spawners(:,1) * del_M).^3 * (1 + f_LWw_spawners * ome); % g, wet weight
 
   % temperature-age at hatching
   Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
@@ -141,11 +152,58 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   % temperature-age at birth
   Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
   
-  % length-gonad weight
-  
+  % L-N data for females
+  f = f1;
+  pars_UE0 = [V_Hb; g; k_J; k_M; v];
+  U_E0 = initial_scaled_reserve(f, pars_UE0); % cm d^-1, initial scaled reserve
+  E_0  = U_E0 * p_Am; % J, energy in egg
+  E_init    = f * E_m * L_init^3; % J, initial energy in the body
 
+  InitCond = [L_init; E_init; E_Hp; E_R_init; 0]; % concatenate initial conditions
+  
+  s_M  = L_j/ L_b; % -, acceleration factor
+  TC = TC_tN;
+  time = tN1(:,1); % d, time
+  
+[t, LEHR] = ode45(@ode_LEHR, time, InitCond,[], par, cPar, f, s_M, TC);
+  % unpack vars:
+  L    = LEHR(:,1);
+  E    = LEHR(:,2);
+  E_R  = LEHR(:,4);
+  E_R1 = LEHR(:,5);
+  % output
+  EN1   = E_R1/ E_0; % # cum nb eggs
+  EWw1  = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, total wet weight
+ 
+  
+  % first two days, no fasting:
+  [t, LEHR] = ode45(@ode_LEHR, [time(time<3);3+1e-5], InitCond,[], par, cPar, f, s_M, TC);
+  L    = LEHR(1:end-1,1);
+  E    = LEHR(1:end-1,2);
+  E_R  = LEHR(1:end-1,4);
+  E_R1 = LEHR(1:end-1,5);
+  
+  EN_1    = E_R1/ E_0; % # cum nb eggs
+  EWw_1   = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, total wet weight
+ 
+   % rest of the time fasting:
+  [t, LEHR] = ode45(@ode_LEHR, [3+1e-5;time(time>=3)], LEHR(end,:),[], par, cPar, 0, s_M, TC);  
+  LEHR(1,:) = []; % remove dummy time  
+  % unpack vars:  
+  L    = LEHR(:,1);
+  E    = LEHR(:,2);
+  E_R  = LEHR(:,4);
+  E_R1 = LEHR(:,5);
+  
+  EN_2   = E_R1/ E_0; % # cum nb eggs
+  EWw_2  = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, total wet weight  
+   EN0    = [EN_1; EN_2]; % #, cum number of eggs
+   EWw0   = [EWw_1; EWw_2]; % #, wet weight at beginning and end of the experiment
+
+  
   % pack to output
   prdData.tL = ELw;
-  prdData.LWw = EWw;
+  prdData.LWw_parrs = EWw_parrs;
+  prdData.LWw_spawners = EWw_spawners;
   prdData.Tah = Eah;
   prdData.Tab = Eab;
