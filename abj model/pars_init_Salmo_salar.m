@@ -34,6 +34,7 @@ par.f_Tah = 1;     free.f_Tah  = 0;    units.f_Tah = '-';       label.f_Tah = 's
 par.f_tL = 1;     free.f_tL  = 0;    units.f_tL = '-';       label.f_tL = 'scaled functional response for time-length data';
 par.f_LWw_parrs = 0.7;    free.f_LWw_parrs  = 0;   units.f_LWw_parrs = '-';      label.f_LWw_parrs = 'scaled functional response for length-weight data';
 par.f_LWw_spawners = 0.7;    free.f_LWw_spawners  = 0;   units.f_LWw_spawners = '-';      label.f_LWw_spawners = 'scaled functional response for length-weight data';
+par.f_tWeVe_tWeYe = 1;  free.f_tWeVe_tWeYe = 0; units.f_tWeVe_tWeYe = '-';  label.f_tWeVe_tWeYe = 'scaled functional response for embryo growth';
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class);
