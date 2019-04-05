@@ -253,6 +253,30 @@ data.Tab(:,1)=C2K(data.Tab(:,1));
 units.Tab   = {'K', 'd'};  label.Tab = {'temperature', 'age at birth'}; 
 bibkey.Tab = 'Peterson1977'; comment.Tab = 'parents from Dennis Stream (New Brunswick - Canada)';
 
+%% T-JX data
+
+% data.TJX = [ ... % temperature (degrees centigrades), food intake over 30 days (kg)
+% 13 0.81
+% 15 0.67
+% 17 0.46
+% 19 0.41];
+% data.TJX(:,1)=C2K(data.TJX(:,1));
+% data.TJX(:,2)=26000000*data.TJX(:,2); % Food energy content is 26 MJ/kg.
+% units.TJX   = {'K', 'J'};  label.TJX = {'temperature', 'food intake'}; 
+% bibkey.TJX = 'Hevroy2013'; comment.TJX = 'probably domestic strain (Norway)';
+
+%% T-dWw data
+
+% data.TdWw = [ ... % temperature (degrees centigrades), change in wet weight (g/d)
+% 13 2000 (2820 - 2000)/30
+% 15 2160 (2790 - 2160)/30
+% 17 2210 (2610 - 2210)/30
+% 19 2220 (2920 - 2220)/30];
+% data.TdWw(:,1)=C2K(data.TdWw(:,1));
+% units.TdWw   = {'K', 'g/d'};  label.TdWw = {'temperature', 'change in wet weight'}; 
+% bibkey.TdWw = 'Hevroy2013'; comment.TdWw = 'probably domestic strain (Norway)';    
+%% L-WwR data
+
 %% t-L data
 
 %data.tL = [ ... % time since first feeding (d), fork length (cm)
@@ -1098,8 +1122,6 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 % 72.9*0.247 72.9];
 % units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
 % bibkey.WdWw = 'ElMowafi1997'; comment.WdWw = 'probably a domestic strain - under starvation';
-
-%% L-WwR data
  
 % Ovary weight is here measured on immature female parrs, so is rather
 % indicative on organs' growth than investment in reproduction.
