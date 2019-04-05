@@ -126,6 +126,65 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   
   % uni-variate data
   
+  % t-Wwe and t-WwVe
+  % temperature 8°C
+  % compute temperature correction factors
+  TC8 = tempcorr(temp.tWwVe_T8, T_ref, T_A);
+  vT8 = v * TC8; kT8_J = TC8 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT8_E_Am = TC8 * J_E_Am;
+  UT8_E0 = TC8 * U_E0;
+  
+  % tW-data embryo witout yolk
+  t = [0; tWwVe_T8(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT8_E0 0], [], kap, vT8, kT8_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e8 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data yolk
+  t = [0; tWwYe_T8(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT8_E0 0], [], kap, vT8, kT8_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT8_E_Am;
+  EV_e8 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
+  
+  % temperature 10°C
+  % compute temperature correction factors
+  TC10 = tempcorr(temp.tWwVe_T10, T_ref, T_A);
+  vT10 = v * TC10; kT10_J = TC10 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT10_E_Am = TC10 * J_E_Am;
+  UT10_E0 = TC10 * U_E0;
+  
+  % tW-data embryo witout yolk
+  t = [0; tWwVe_T10(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT10_E0 0], [], kap, vT10, kT10_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e10 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data
+  t = [0; tWwYe_T10(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT10_E0 0], [], kap, vT10, kT10_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT10_E_Am;
+  EV_e10 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
+  
+  % temperature 12°C
+  % compute temperature correction factors
+  TC12 = tempcorr(temp.tWwVe_T12, T_ref, T_A);
+  vT12 = v * TC12; kT12_J = TC12 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT12_E_Am = TC12 * J_E_Am;
+  UT12_E0 = TC12 * U_E0;
+  
+  % tW-data embryo witout yolk
+  t = [0; tWwVe_T12(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT12_E0 0], [], kap, vT12, kT12_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e12 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data
+  t = [0; tWwYe_T12(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT12_E0 0], [], kap, vT12, kT12_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT12_E_Am;
+  EV_e12 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
+  
+  
   % time-length 
   F = f_tL; 
   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
@@ -157,6 +216,12 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   
   % pack to output
   prdData.tL = ELw;
+  prdData.tWwVe_T8 = EWw_e8;
+  prdData.tWwYe_T8 = EV_e8;
+  prdData.tWwVe_T10 = EWw_e10;
+  prdData.tWwYe_T10 = EV_e10;
+  prdData.tWwVe_T12 = EWw_e12;
+  prdData.tWwYe_T12 = EV_e12;
   prdData.LWw_parrs = EWw_parrs;
   prdData.LWw_spawners = EWw_spawners;
   prdData.Tah = Eah;
