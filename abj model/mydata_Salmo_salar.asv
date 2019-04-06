@@ -1345,12 +1345,12 @@ weights.tWw_T18 = weights.tWw_T18/6;
 weights.tL_f25 = weights.tL_f25/4;
 weights.tL_f50 = weights.tL_f50/4;
 weights.tL_f75 = weights.tL_f75/4;
-weights.tL_f100 = weights.tL_f100/4;
+weights.tWw_f100 = weights.tWw_f100/4;
 weights.tWw_f25 = weights.tWw_f25/4;
 weights.tWw_f50 = weights.tWw_f50/4;
 weights.tWw_f75 = weights.tWw_f75/4;
 weights.tWw_f100 = weights.tWw_f100/4;
-weights.V0 = 3*weights.V0 ; 
+weights.V0 = weights.V0/3 ; 
 weights.Tab = 3*weights.Tab ; 
 weights.Tah = 3*weights.Tah ; 
 

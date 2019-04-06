@@ -17,17 +17,19 @@ par.kap_R = 0.95;     free.kap_R = 0;   units.kap_R = '-';        label.kap_R = 
 par.p_M = 47.0073;    free.p_M   = 1;   units.p_M = 'J/d.cm^3';   label.p_M = '[p_M], vol-spec somatic maint'; 
 par.p_T = 0;          free.p_T   = 0;   units.p_T = 'J/d.cm^2';   label.p_T = '{p_T}, surf-spec somatic maint'; 
 par.k_J = 0.002;      free.k_J   = 0;   units.k_J = '1/d';        label.k_J = 'maturity maint rate coefficient'; 
-par.E_G = 5209.6845;  free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
+par.E_G = 5200*2;  free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
+par.E_Hh = 5.212e+01; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
 par.E_Hb = 5.641e+01; free.E_Hb  = 1;   units.E_Hb = 'J';         label.E_Hb = 'maturity at birth'; 
 par.E_Hj = 1.451e+02; free.E_Hj  = 1;   units.E_Hj = 'J';         label.E_Hj = 'maturity at metamorphosis'; 
 par.E_Hp = 3.127e+05; free.E_Hp  = 1;   units.E_Hp = 'J';         label.E_Hp = 'maturity at puberty'; 
 par.h_a = 1.976e-06;  free.h_a   = 1;   units.h_a = '1/d^2';      label.h_a = 'Weibull aging acceleration'; 
 par.s_G = 1;          free.s_G   = 0;   units.s_G = '-';          label.s_G = 'Gompertz stress coefficient'; 
 
-%% other parameters 
-par.E_Hh = 5.212e+01; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
+%% Auxiliary parameters 
 par.L_slim = 12;      free.L_slim = 0;   units.L_slim = 'cm';      label.L_slim = 'length threshold for smoltification'; 
 par.del_M = 0.084176;  free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 
+
+%% Environmental parameters (excl. temperature)
 par.f = 0.7;          free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
 par.f_LWw_parrs = 0.7;  free.f_LWw_parrs = 0;   units.f_LWw_parrs = '-';  label.f_LWw_parrs = 'scaled functional response for length-weight data'; 
 par.f_LWw_spawners = 0.7;  free.f_LWw_spawners = 0;   units.f_LWw_spawners = '-';  label.f_LWw_spawners = 'scaled functional response for length-weight data'; 
@@ -37,10 +39,16 @@ par.f_tL_f100 = 1;    free.f_tL_f100 = 0;   units.f_tL_f100 = '-';    label.f_tL
 par.f_tL_f25 = 0.25;  free.f_tL_f25 = 0;   units.f_tL_f25 = '-';     label.f_tL_f25 = 'scaled functional response for growth data at different food levels'; 
 par.f_tL_f50 = 0.5;   free.f_tL_f50 = 0;   units.f_tL_f50 = '-';     label.f_tL_f50 = 'scaled functional response for growth data at different food levels'; 
 par.f_tL_f75 = 0.75;  free.f_tL_f75 = 0;   units.f_tL_f75 = '-';     label.f_tL_f75 = 'scaled functional response for growth data at different food levels'; 
+par.t0_tLWwf = 180;    free.t0_tLWwf   = 1;   units.t0_tLWwf = 'd';          label.t0_tLWwf = 'time since birth at 0 time for growth at different food levels'; 
 par.f_tWeVe_tWeYe = 1;  free.f_tWeVe_tWeYe = 0;   units.f_tWeVe_tWeYe = '-';  label.f_tWeVe_tWeYe = 'scaled functional response for embryo growth'; 
+par.W_0 = 81.9;       free.W_0   = 0;   units.W_0 = 'g';          label.W_0 = 'initial weigth in time-weigth data'; 
+par.t_0 = 180;    free.t_0   = 1;   units.t_0 = 'd';          label.t_0 = 'time since birth at 0 time in time-length data'; 
+par.f_tW = 1;         free.f_tW  = 0;   units.f_tW = '-';         label.f_tW = 'scaled functional response for time-weigth data'; 
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class); 
+par.d_V = 0.25;        free.d_V   = 0;   units.d_V = 'g/cm^3';     label.d_V = 'specific density of structure'; 
+par.d_E = 0.25;        free.d_E   = 0;   units.d_E = 'g/cm^3';     label.d_E = 'specific density of reserve'; 
 
 %% Pack output: 
 txtPar.units = units; txtPar.label = label; par.free = free; 

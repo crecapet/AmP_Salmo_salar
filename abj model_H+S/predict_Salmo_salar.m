@@ -4,19 +4,9 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   cPar = parscomp_st(par); vars_pull(par); 
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
-     filterChecks = E_Hh > E_Hb || E_Hh < 0;
-%                      f1>1 || f1 <0 || ...
-%                      f2>1 || f2 <0 || ...
-%                      f3>1 || f3 <0 || ...
-%                      s_shrink < 0 || s_shrink > 1e6 || ...
-%                      L_init < 0 || L_init > L_m * 43 || L_init^3 > 0.9 * 0.35 || ...
-%                      E_R_init < 0 || w_E/ mu_E/ d_E * E_R_init > 0.8 * 0.35; 
-  
-  if filterChecks  
-    info = 0;
-    prdData = {};
-    return;
-  end  
+  if E_Hh > E_Hb
+      info = 0; prdData = []; return
+  end
 
 %   % customized filters for allowable parameters of the standard DEB model (std)
 %   % for other models consult the appropriate filter function.
@@ -37,17 +27,11 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   % compute temperature correction factors
   TC_Tah = tempcorr(Tah(:,1), T_ref, T_A);
   TC_Tab = tempcorr(Tab(:,1), T_ref, T_A);
-% TC_aj = tempcorr(temp.aj, T_ref, T_A);
-% TC_as = tempcorr(temp.as, T_ref, T_A);
+  TC_aj = tempcorr(temp.aj, T_ref, T_A);
   TC_ap = tempcorr(temp.ap, T_ref, T_A);
   TC_am = tempcorr(temp.am, T_ref, T_A);
   TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
   TC_tL = tempcorr(temp.tL, T_ref, T_A);
-% TC_tL_f0 = tempcorr(temp.tL_f0, T_ref, T_A);
-  TC_tL_f25 = tempcorr(temp.tL_f25, T_ref, T_A);
-  TC_tL_f50 = tempcorr(temp.tL_f50, T_ref, T_A);
-  TC_tL_f75 = tempcorr(temp.tL_f75, T_ref, T_A);
-  TC_tL_f100 = tempcorr(temp.tL_f100, T_ref, T_A);
   TC_tWw_T4 = tempcorr(temp.tWw_T4, T_ref, T_A); %SOM - 3-04-2019
   TC_tWw_T6 = tempcorr(temp.tWw_T6, T_ref, T_A); %SOM - 3-04-2019
   TC_tWw_T8 = tempcorr(temp.tWw_T8, T_ref, T_A); %SOM - 3-04-2019
@@ -75,9 +59,9 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   % hatch   
   [U_H aUL] = ode45(@dget_aul, [0; U_Hh; U_Hb], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
 % a_h = aUL(2,1); aT_h = a_h/ TC_ah; % d, age at hatch at f and T
-  L_h = aUL(2,3); % cm, structural length at hatch at f
-  Lw_h = L_h / del_M;  % cm, structural length at hatch at f
-  Ww_h = L_h^3 * (1 + f * ome);       % g, wet weight at hatch at f 
+  L_h = aUL(2,3); % cm, structural length at birth at f
+  Lw_h = L_h / del_M;  % cm, structural length at birth at f
+  Ww_h = L_h^3 * (1 + f * ome);       % g, wet weight at hatching at f 
 
   % birth
   L_b = L_m * l_b;                  % cm, structural length at birth at f
@@ -86,37 +70,18 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 % aT_b = tau_b/ k_M/ TC_ab;           % d, age at birth at f and T
 
   % metamorphosis
-%   L_j = L_m * l_j;                  % cm, structural length at metam
-%   Lw_j = L_j/ del_M;                % cm, physical length at metam at f
-%   Ww_j = L_j^3 * (1 + f * ome);       % g, wet weight at metam
-%   aT_j = tau_j/ k_M/ TC_aj;  % d, age at metam
-
-  % smoltification   
-%   Lw_s = L_slim;  % cm, physical length at smoltification at f
-%   Ww_s = L_s^3 * (1 + f * ome);       % g, wet weight at smoltification at f 
-%   F = f; 
-%   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-%   rT_B = TC_as * rho_B * k_M;  % 1/d, von Bert growth rate   
-%   rT_j = TC_as * rho_j * k_M;  % 1/d, exponential growth rate
-%   aT_b = tau_b/ k_M/ TC_as; aT_j = tau_j/ k_M/ TC_as;   
-%   t_j = aT_j - aT_b; % time since birth at metamorphosis
-%   L_j = L_m * l_j;
-%   Lw_b = l_b * L_m/ del_M; 
-%   Lw_j = l_j * L_m/ del_M; 
-%   Lw_i = l_i * L_m/ del_M;
-%   if L_s < L_j % select times between birth & metamorphosis   
-%     t_s = log(Lw_s/Lw_b)*3/rT_j; % exponential growth as V1-morph
-%     aT_s = aT_b + t_s;
-%   else % selects times after metamorphosis
-%     t_s = t_j - log((Lw_i - Lw_s)/(Lw_i - Lw_j))/rT_B ; % d, time since birth at smoltification
-%     aT_s = aT_b + t_s;
-%   end
-
+  L_j = L_m * l_j;                  % cm, structural length at metam
+  Lw_j = L_j/ del_M;                % cm, physical length at metam at f
+  Ww_j = L_j^3 * (1 + f * ome);       % g, wet weight at metam
+  % tT_j = (tau_j - tau_b) / k_M/ TC_tj;  % d, time since birth at metam
+  aT_j = (tau_j - tau_b) / k_M/ TC_aj + tau_b/ k_M/ TC_aj;  % d, age at metam
+ 
   % puberty 
   L_p = L_m * l_p;                  % cm, structural length at puberty at f
   Lw_p = L_p/ del_M;                % cm, physical length at puberty at f
   Ww_p = L_p^3 *(1 + f * ome);        % g, wet weight at puberty 
-  aT_p = tau_p / k_M/ TC_ap;   % d, age at puberty at f and T
+  % tT_p = (tau_p - tau_b)/ k_M/ TC_tp;   % d, time since birth at puberty at f and T
+  aT_p = (tau_j - tau_b) / k_M/ TC_ap + tau_b/ k_M/ TC_ap + (tau_p - tau_b)/ k_M/ TC_ap;   % d, age at puberty at f and T
 
   % ultimate
   L_i = L_m * l_i;                  % cm, ultimate structural length at f
@@ -137,23 +102,20 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 % prdData.ah = aT_h;
 % prdData.ab = aT_b;
 % prdData.tj = tT_j;
-% prdData.aj = aT_j;
-% prdData.as = aT_s;
+  prdData.aj = aT_j;
 % prdData.tp = tT_p;
   prdData.ap = aT_p;
   prdData.am = aT_m;
   prdData.Lh = Lw_h;
   prdData.Lb = Lw_b;
-% prdData.Lj = Lw_j;
-% prdData.Ls = Lw_s;
+  prdData.Lj = Lw_j;
 % prdData.Lp = Lw_p;
   prdData.Li = Lw_i;
   prdData.V0 = V_0;
   prdData.Wd0 = Wd_0;
   prdData.Wwh = Ww_h;
   prdData.Wwb = Ww_b;
-% prdData.Wwj = Ww_j;
-% prdData.Wws = Ww_s;
+  prdData.Wwj = Ww_j;
 % prdData.Wwp = Ww_p;
   prdData.Wwi_F = Ww_i;
   prdData.E0 = E_0;
@@ -188,7 +150,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   JT10_E_Am = TC10 * J_E_Am;
   UT10_E0 = TC10 * U_E0;
   
-  % tW-data embryo without yolk
+  % tW-data embryo witout yolk
   t = [0; tWwVe_T10(:,1)]; 
   [t LUH] = ode45(@dget_LUH, t, [1e-10 UT10_E0 0], [], kap, vT10, kT10_J, g, L_m); 
   LUH(1,:) = []; L = LUH(:,1); % cm, structural length
@@ -217,7 +179,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   [t LUH] = ode45(@dget_LUH, t, [1e-10 UT12_E0 0], [], kap, vT12, kT12_J, g, L_m); 
   LUH(1,:) = []; 
   L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT12_E_Am;
-  EV_e12 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus  
+  EV_e12 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
   
   % time-length 
   F = f_tL; 
@@ -225,17 +187,27 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   rT_B = TC_tL * rho_B * k_M;  % 1/d, von Bert growth rate   
   rT_j = TC_tL * rho_j * k_M;  % 1/d, exponential growth rate
   aT_b = tau_b/ k_M/ TC_tL; aT_j = tau_j/ k_M/ TC_tL;   
-  t_j = aT_j - aT_b; % time since birth at metamorphosis
-  t_bj = tL(tL(:,1)+t_0 < t_j,1)+t_0; % select times between birth & metamorphosis   
+  tau_j = aT_j - aT_b; % time since birth at metamorphosis at the experimental temperature
+  t_bj = tL(tL(:,1)+t_0 < tau_j,1)+t_0; % select times between birth & metamorphosis   
   Lw_b = l_b * L_m/ del_M; 
   Lw_j = l_j * L_m/ del_M; 
   Lw_i = l_i * L_m/ del_M;
   EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-  t_ji = tL(tL(:,1)+t_0 >= t_j,1)+t_0; % selects times after metamorphosis
-  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - t_j)); % cm, expected length at time
+  t_ji = tL(tL(:,1)+t_0 >= tau_j,1)+t_0; % selects times after metamorphosis
+  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tau_j)); % cm, expected length at time
   ELw = [EL_bj; EL_ji]; % catenate lengths
   
-     %SOM - 3-04-2019
+  % length-weight
+  EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight
+  EWw_spawners = (LWw_spawners(:,1) * del_M).^3 * (1 + f_LWw_spawners * ome); % g, wet weight
+
+  % temperature-age at hatching
+  Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
+  
+  % temperature-age at birth
+  Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
+  
+   %SOM - 3-04-2019
   % t-Ww data in seawater 
   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_tW);
     
@@ -339,118 +311,8 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   EWw_T14 = L.^3 * (1 + f_tW * w);
 
 
-  % time-length and time-weight at different food levels
-  % no food
-%   F = f_tL_f0; 
-%   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-%   rT_B = TC_tL_f0 * rho_B * k_M;  % 1/d, von Bert growth rate   
-%   rT_j = TC_tL_f0 * rho_j * k_M;  % 1/d, exponential growth rate
-%   aT_b = tau_b/ k_M/ TC_tL_f0; aT_j = tau_j/ k_M/ TC_tL_f0;   
-%   t_j = aT_j - aT_b; % time since birth at metamorphosis
-%   t_bj = tL_f0(tL_f0(:,1) < t_j,1); % select times between birth & metamorphosis   
-%   Lw_b = l_b * L_m/ del_M; 
-%   Lw_j = l_j * L_m/ del_M; 
-%   Lw_i = l_i * L_m/ del_M;
-%   EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-%   t_ji = tL_f0(tL_f0(:,1) >= t_j,1); % selects times after metamorphosis
-%   EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - t_j)); % cm, expected length at time
-%   ELw_f0 = [EL_bj; EL_ji]; % catenate lengths
-%   EWw_f0 = (tL_f0(:,2) * del_M).^3 * (1 + F * ome); % g, wet weight
-
-  % 25 percent food
-  F = f_tL_f25; 
-  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-  rT_B = TC_tL_f25 * rho_B * k_M;  % 1/d, von Bert growth rate   
-  rT_j = TC_tL_f25 * rho_j * k_M;  % 1/d, exponential growth rate
-  aT_b = tau_b/ k_M/ TC_tL_f25; aT_j = tau_j/ k_M/ TC_tL_f25;   
-  tT_j = aT_j - aT_b; % time since birth at metamorphosis
-  t_bj = tL_f25(tL_f25(:,1) + t0_tLWwf < tT_j,1) + t0_tLWwf; % select times between birth & metamorphosis   
-  L_b = l_b * L_m; 
-  L_j = l_j * L_m; 
-  L_i = l_i * L_m;
-  EL_bj = L_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-  t_ji = tL_f25(tL_f25(:,1) + t0_tLWwf>= tT_j,1) + t0_tLWwf; % selects times after metamorphosis
-  EL_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tT_j)); % cm, expected length at time
-  EL_f25 = [EL_bj; EL_ji]; % catenate lengths
-  ELw_f25 = EL_f25 / del_M;
-  EWw_f25 = EL_f25 .^3 * (1 + F * ome); % g, wet weight
-
-  % 50 percent food
-  F = f_tL_f50; 
-  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-  rT_B = TC_tL_f50 * rho_B * k_M;  % 1/d, von Bert growth rate   
-  rT_j = TC_tL_f50 * rho_j * k_M;  % 1/d, exponential growth rate
-  aT_b = tau_b/ k_M/ TC_tL_f50; aT_j = tau_j/ k_M/ TC_tL_f50;   
-  tT_j = aT_j - aT_b; % time since birth at metamorphosis
-  t_bj = tL_f50(tL_f50(:,1) + t0_tLWwf < tT_j,1) + t0_tLWwf; % select times between birth & metamorphosis   
-  Lw_b = l_b * L_m/ del_M; 
-  Lw_j = l_j * L_m/ del_M; 
-  Lw_i = l_i * L_m/ del_M;
-  EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-  t_ji = tL_f50(tL_f50(:,1) + t0_tLWwf >= tT_j,1) + t0_tLWwf; % selects times after metamorphosis
-  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tT_j)); % cm, expected length at time
-  ELw_f50 = [EL_bj; EL_ji]; % catenate lengths
-  EWw_f50 = (ELw_f50 * del_M).^3 * (1 + F * ome); % g, wet weight
-
-  % 75 percent food
-  F = f_tL_f75; 
-  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-  rT_B = TC_tL_f75 * rho_B * k_M;  % 1/d, von Bert growth rate   
-  rT_j = TC_tL_f75 * rho_j * k_M;  % 1/d, exponential growth rate
-  aT_b = tau_b/ k_M/ TC_tL_f75; aT_j = tau_j/ k_M/ TC_tL_f75;   
-  tT_j = aT_j - aT_b; % time since birth at metamorphosis
-  t_bj = tL_f75(tL_f75(:,1) + t0_tLWwf < tT_j,1) + t0_tLWwf; % select times between birth & metamorphosis   
-  Lw_b = l_b * L_m/ del_M; 
-  Lw_j = l_j * L_m/ del_M; 
-  Lw_i = l_i * L_m/ del_M;
-  EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-  t_ji = tL_f75(tL_f75(:,1) + t0_tLWwf >= tT_j,1) + t0_tLWwf; % selects times after metamorphosis
-  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tT_j)); % cm, expected length at time
-  ELw_f75 = [EL_bj; EL_ji]; % catenate lengths
-  EWw_f75 = (ELw_f75 * del_M).^3 * (1 + F * ome); % g, wet weight
-
-  % 100 percent food
-  F = f_tL_f100; 
-  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
-  rT_B = TC_tL_f100 * rho_B * k_M;  % 1/d, von Bert growth rate   
-  rT_j = TC_tL_f100 * rho_j * k_M;  % 1/d, exponential growth rate
-  aT_b = tau_b/ k_M/ TC_tL_f75; aT_j = tau_j/ k_M/ TC_tL_f75;   
-  tT_j = aT_j - aT_b; % time since birth at metamorphosis
-  t_bj = tL_f100(tL_f100(:,1) + t0_tLWwf < tT_j,1) + t0_tLWwf; % select times between birth & metamorphosis   
-  Lw_b = l_b * L_m/ del_M; 
-  Lw_j = l_j * L_m/ del_M; 
-  Lw_i = l_i * L_m/ del_M;
-  EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
-  t_ji = tL_f100(tL_f100(:,1) + t0_tLWwf >= tT_j,1) + t0_tLWwf; % selects times after metamorphosis
-  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - tT_j)); % cm, expected length at time
-  ELw_f100 = [EL_bj; EL_ji]; % catenate lengths
-  EWw_f100 = (ELw_f100 * del_M).^3 * (1 + F * ome); % g, wet weight
-
-  % length-weight
-  EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight
-  EWw_spawners = (LWw_spawners(:,1) * del_M).^3 * (1 + f_LWw_spawners * ome); % g, wet weight
-
-  % temperature-age at hatching
-  Eah = aUL(2,1) ./ TC_Tah; % d, time at hatch
-  
-  % temperature-age at birth
-  Eab = tau_b/ k_M ./ TC_Tab;        % d, age at birth at f and T
-  
-  % L-N data for females
-  
-  
   % pack to output
   prdData.tL = ELw;
-% prdData.tL_f0 = ELw_f0;
-  prdData.tL_f25 = ELw_f25;
-  prdData.tL_f50 = ELw_f50;
-  prdData.tL_f75 = ELw_f75;
-  prdData.tL_f100 = ELw_f100;
-% prdData.tWw_f0 = EWw_f0;
-  prdData.tWw_f25 = EWw_f25;
-  prdData.tWw_f50 = EWw_f50;
-  prdData.tWw_f75 = EWw_f75;
-  prdData.tWw_f100 = EWw_f100;
   prdData.tWwVe_T8 = EWw_e8;
   prdData.tWwYe_T8 = EV_e8;
   prdData.tWwVe_T10 = EWw_e10;
