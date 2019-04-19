@@ -10,7 +10,7 @@ metaData.family     = 'Salmonidae';
 metaData.species    = 'Salmo_salar'; 
 metaData.species_en = 'Atlantic_salmon'; 
 metaData.T_typical  = C2K(10); % K, body temp
-metaData.data_0     = {'aj';'ap';'am';'Lh';'Lb';'Lj';'Li';'V0';'Wd0';'Wwb';'Wwj';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
+metaData.data_0     = {'as';'ap';'am';'Lh';'Lb';'Ls';'Li';'V0';'Wd0';'Wwb';'Wws';'E0';'Ri'}; % zero-variate data labels: http://www.debtheory.org/wiki/index.php?title=Zero-variate_data
 metaData.data_1     = {'T-ah';'T-ab';'t-L';'t-Wwe';'t-WwVe';'L-Ww'}; % uni-variate data labels:  http://www.debtheory.org/wiki/index.php?title=Univariate_data 
 
 % metaData.COMPLETE = ; % using criteria of LikaKear2011 http://www.debtheory.org/wiki/index.php?title=Completeness
@@ -43,14 +43,14 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 
 %% Age at smoltification
 
-% data.aj = 2.265*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.aj = 'Hutchings1998'; comment.aj = 'median of Scottish populations';
-%   temp.aj = C2K(10);  units.temp.aj = 'K'; label.temp.aj = 'temperature'; comment.temp.aj = 'rough guess - highly variable temperature throughout life';
-% data.aj = 1.04*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
-% data.aj = 3.03*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
-% data.aj = 2.6*365.25;    units.aj = 'd';    label.aj = 'age at metamorphosis'; bibkey.tj = 'Jutila2006'; comment.tj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004';
-%   temp.aj = C2K();  units.temp.aj = 'K'; label.temp.aj = 'temperature';
+% data.as = 2.265*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.as = 'Hutchings1998'; comment.as = 'median of Scottish populations';
+%   temp.as = C2K(10);  units.temp.as = 'K'; label.temp.as = 'temperature'; comment.temp.as = 'rough guess - highly variable temperature throughout life';
+% data.as = 1.04*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
+% data.as = 3.03*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
+% data.as = 2.6*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Jutila2006'; comment.tj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004';
+%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
 
 %% Age at maturity (or age at first spawning minus 1 year)
 
@@ -127,11 +127,11 @@ data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   
 
 %% Length at smoltification
 
-% data.Lj  = 12;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'median of Scottish populations';
-% data.Lj  = 18.7;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'Nivelle';
-% data.Lj  = 12.5;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Hutchings1998'; comment.Lj = 'median of Icelandic populations';
-% data.Lj  = 15.5;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Jutila2006'; comment.Lj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1991';
-% data.Lj  = 14.7;   units.Lj  = 'cm';  label.Lj  = 'total length at metamorphosis'; bibkey.Lj  = 'Jutila2006'; comment.Lj = 'Simojoki (Baltic Sea, Finland) - mean from 1992 to 2004';
+% data.Ls  = 12;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'median of Scottish populations';
+% data.Ls  = 18.7;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'Nivelle';
+% data.Ls  = 12.5;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Hutchings1998'; comment.Ls = 'median of Icelandic populations';
+% data.Ls  = 15.5;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1991';
+% data.Ls  = 14.7;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1992 to 2004';
 
 %% Length at maturity (or 1 year before first spawning)
 
@@ -180,9 +180,9 @@ data.Wwb = 0.16;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     bib
 
 %% Weight at smoltification
 
-% data.Wwj = 24;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jonsson1998';  comment.Wwj = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
-% data.Wwj = 25;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
-% data.Wwj = 29;   units.Wwj = 'g';   label.Wwj = 'wet weight at metamorphosis';   bibkey.Wwj = 'Jutila2006';  comment.Wwj = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
+% data.Wws = 24;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jonsson1998';  comment.Wws = 'Imsa River (Norway) - mean of 165 individuals from 1983 to 1993 - s.d. = 6.6';
+% data.Wws = 25;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jutila2006';  comment.Wws = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1981 and 1992 to 2004';
+% data.Wws = 29;   units.Wws = 'g';   label.Wws = 'wet weight at smoltification';   bibkey.Wws = 'Jutila2006';  comment.Wws = 'Simojoki (Baltic Sea, Finland) - mean from 1982 to 1991';
 
 %% Weight at maturity (or 1 year before first spawning)
 
@@ -1281,12 +1281,15 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 
 %% set weights for all real data
 weights = setweights(data, []);
-weights.tWwVe_T8 = weights.tWwVe_T8/3;
-weights.tWwYe_T8 = weights.tWwYe_T8/3;
-weights.tWwVe_T10 = weights.tWwVe_T10/3;
-weights.tWwYe_T10 = weights.tWwYe_T10/3;
-weights.tWwVe_T12 = weights.tWwVe_T12/3;
-weights.tWwYe_T12 = weights.tWwYe_T12/3;
+weights.V0 = weights.V0/3;
+weights.Tah = 3*weights.Tah;
+weights.Tab = 3*weights.Tab;
+weights.tWwVe_T8 = weights.tWwVe_T8/9;
+weights.tWwYe_T8 = weights.tWwYe_T8/9;
+weights.tWwVe_T10 = weights.tWwVe_T10/9;
+weights.tWwYe_T10 = weights.tWwYe_T10/9;
+weights.tWwVe_T12 = weights.tWwVe_T12/9;
+weights.tWwYe_T12 = weights.tWwYe_T12/9;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
@@ -1299,9 +1302,10 @@ txtData.bibkey = bibkey;
 txtData.comment = comment;
 
 %% Group plots
-% set1 = {''}; comment1 = {''};
-% metaData.grp.sets = {set1};
-% metaData.grp.comment = {comment1};
+set1 = {'tWwVe_T8','tWwVe_T10','tWwVe_T12'}; comment1 = {'Gunnes1979'};
+set2 = {'tWwYe_T8','tWwYe_T10','tWwYe_T12'}; comment2 = {'Gunnes1979'};
+metaData.grp.sets = {set1, set2};
+metaData.grp.comment = {comment1, comment2};
 
 %% Facts
 % F1 = '';

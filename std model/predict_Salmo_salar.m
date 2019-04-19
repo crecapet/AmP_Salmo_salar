@@ -52,12 +52,26 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   Ww_b = L_b^3 * (1 + f * ome);       % g, wet weight at birth at f 
 % aT_b = tau_b/ k_M/ TC_ab;           % d, age at birth at f and T
 
+%   % smoltification 
+%   F = f;
+%   [tau_p, tau_b, l_p, l_b] = get_tp(pars_tp, F);
+%   Lw_b = L_m * l_b/ del_M;  Lw_i = L_m * (F - l_T)/ del_M;
+%   ir_B = 3/ k_M + 3 * F * L_m/ v; rT_B = TC_tL/ ir_B;  % d, 1/von Bert growth rate
+%   as = 
+%   Ls = Lw_i - (Lw_i - Lw_b) * exp( - rT_B * ts); % cm, total length
+% 
+%   L_p = L_m * l_p;                  % cm, structural length at smoltification at f
+%   Lw_p = L_p/ del_M;                % cm, physical length at smoltification at f
+%   Ww_p = L_p^3 *(1 + f * ome);        % g, wet weight at smoltification 
+%   % tT_p = (tau_p - tau_b)/ k_M/ TC_tp;   % d, time since birth at smoltification at f and T
+%   aT_p = tau_b/ k_M/ TC_ap + (tau_p - tau_b)/ k_M/ TC_ap;   % d, age at smoltification at f and T
+
   % puberty 
   L_p = L_m * l_p;                  % cm, structural length at puberty at f
   Lw_p = L_p/ del_M;                % cm, physical length at puberty at f
   Ww_p = L_p^3 *(1 + f * ome);        % g, wet weight at puberty 
   % tT_p = (tau_p - tau_b)/ k_M/ TC_tp;   % d, time since birth at puberty at f and T
-  aT_p = tau_b/ k_M/ TC_ap + (tau_p - tau_b)/ k_M/ TC_ap;   % d, age at puberty at f and T
+  aT_p = tau_p/ k_M/ TC_ap;   % d, age at puberty at f and T
 
   % ultimate
   l_i = f - l_T;                    % -, scaled ultimate length
@@ -160,7 +174,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   [tau_p, tau_b, l_p, l_b] = get_tp(pars_tp, F);
   Lw_b = L_m * l_b/ del_M;  Lw_i = L_m * (F - l_T)/ del_M;
   ir_B = 3/ k_M + 3 * F * L_m/ v; rT_B = TC_tL/ ir_B;  % d, 1/von Bert growth rate
-  ELw = Lw_i - (Lw_i - Lw_b) * exp( - rT_B * tL(:,1)); % cm, total length
+  ELw = Lw_i - (Lw_i - Lw_b) * exp( - rT_B * (tL(:,1) + t0_tL)); % cm, total length
   
   % length-weight
   EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight

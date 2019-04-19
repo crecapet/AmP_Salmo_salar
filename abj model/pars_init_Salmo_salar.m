@@ -31,19 +31,22 @@ par.del_M = 0.084176;  free.del_M = 1;   units.del_M = '-';        label.del_M =
 
 %% Environmental parameters (excl. temperature)
 par.f = 0.7;          free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
-par.f_LWw_parrs = 0.7;  free.f_LWw_parrs = 0;   units.f_LWw_parrs = '-';  label.f_LWw_parrs = 'scaled functional response for length-weight data'; 
-par.f_LWw_spawners = 0.7;  free.f_LWw_spawners = 0;   units.f_LWw_spawners = '-';  label.f_LWw_spawners = 'scaled functional response for length-weight data'; 
+par.f_ah = par.f;         free.f_ah  = 0;   units.f_ah = '-';         label.f_ah = 'scaled functional response for age at hatching data'; 
+par.f_ab = 1;         free.f_ab  = 0;   units.f_ab = '-';         label.f_ab = 'scaled functional response for age at birth data'; 
 par.f_tL = 1;         free.f_tL  = 0;   units.f_tL = '-';         label.f_tL = 'scaled functional response for time-length data'; 
-par.f_tL_f0 = 0;      free.f_tL_f0 = 0;   units.f_tL_f0 = '-';      label.f_tL_f0 = 'scaled functional response for growth data at different food levels'; 
-par.f_tL_f100 = 1;    free.f_tL_f100 = 0;   units.f_tL_f100 = '-';    label.f_tL_f100 = 'scaled functional response for growth data at different food levels'; 
-par.f_tL_f25 = 0.25;  free.f_tL_f25 = 0;   units.f_tL_f25 = '-';     label.f_tL_f25 = 'scaled functional response for growth data at different food levels'; 
-par.f_tL_f50 = 0.5;   free.f_tL_f50 = 0;   units.f_tL_f50 = '-';     label.f_tL_f50 = 'scaled functional response for growth data at different food levels'; 
-par.f_tL_f75 = 0.75;  free.f_tL_f75 = 0;   units.f_tL_f75 = '-';     label.f_tL_f75 = 'scaled functional response for growth data at different food levels'; 
-par.t0_tLWwf = 180;    free.t0_tLWwf   = 1;   units.t0_tLWwf = 'd';          label.t0_tLWwf = 'time since birth at 0 time for growth at different food levels'; 
+par.f_LWw_parrs = par.f;  free.f_LWw_parrs = 0;   units.f_LWw_parrs = '-';  label.f_LWw_parrs = 'scaled functional response for length-weight data'; 
+par.f_LWw_spawners = par.f;  free.f_LWw_spawners = 0;   units.f_LWw_spawners = '-';  label.f_LWw_spawners = 'scaled functional response for length-weight data'; 
+par.f_tL = 1;         free.f_tL  = 0;   units.f_tL = '-';         label.f_tL = 'scaled functional response for time-length data'; 
+par.f_tLWw_f0 = 0;      free.f_tL_f0 = 0;   units.f_tL_f0 = '-';      label.f_tL_f0 = 'scaled functional response for growth data at different food levels'; 
+par.f_tLWw_f100 = 1;    free.f_tL_f100 = 0;   units.f_tL_f100 = '-';    label.f_tL_f100 = 'scaled functional response for growth data at different food levels'; 
+par.f_tLWw_f25 = 0.25;  free.f_tL_f25 = 0;   units.f_tL_f25 = '-';     label.f_tL_f25 = 'scaled functional response for growth data at different food levels'; 
+par.f_tLWw_f50 = 0.5;   free.f_tL_f50 = 0;   units.f_tL_f50 = '-';     label.f_tL_f50 = 'scaled functional response for growth data at different food levels'; 
+par.f_tLWw_f75 = 0.75;  free.f_tL_f75 = 0;   units.f_tL_f75 = '-';     label.f_tL_f75 = 'scaled functional response for growth data at different food levels'; 
+% par.t0_tLWwf = 300;    free.t0_tLWwf   = 0;   units.t0_tLWwf = 'd';          label.t0_tLWwf = 'time since birth at 0 time for growth at different food levels'; 
 par.f_tWeVe_tWeYe = 1;  free.f_tWeVe_tWeYe = 0;   units.f_tWeVe_tWeYe = '-';  label.f_tWeVe_tWeYe = 'scaled functional response for embryo growth'; 
-par.W_0 = 81.9;       free.W_0   = 0;   units.W_0 = 'g';          label.W_0 = 'initial weigth in time-weigth data'; 
-par.t_0 = 180;    free.t_0   = 1;   units.t_0 = 'd';          label.t_0 = 'time since birth at 0 time in time-length data'; 
 par.f_tW = 1;         free.f_tW  = 0;   units.f_tW = '-';         label.f_tW = 'scaled functional response for time-weigth data'; 
+par.W_0 = 81.9;       free.W_0   = 0;   units.W_0 = 'g';          label.W_0 = 'initial weigth in time-weigth data'; 
+par.t0_tL = 20;    free.t0_tL   = 1;   units.t0_tL = 'd';          label.t0_tL = 'time since birth at 0 time in time-length data'; 
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class); 

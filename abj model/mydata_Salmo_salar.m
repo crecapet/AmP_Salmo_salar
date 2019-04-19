@@ -17,8 +17,18 @@ metaData.data_1     = {'T-ah';'T-ab';'t-L_f';'t-Wwe_T';'t-WwVe_T';'t-Ww_T';'L-Ww
 
 metaData.author   = {'Charlotte Recapet'};    
 metaData.date_subm = [2019 03 13];              
+metaData.email    = {'charlotte.recapet(at)univ-pau.fr'};            
+metaData.address  = {'Joint research unit "Behavioral Ecology and Fish Population Biology", National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
+
+metaData.author_mod_1   = {'Sylvie Oddou-Muratorio'};    
+metaData.date_subm_mod_1 = [2019 03 13];              
+metaData.email_mod_1    = {'sylvie.oddou(at)inra.fr'};            
+metaData.address_mod_1  = {'Research unit "Ecology of Mediterranean Forests", National Institute for Agronomic Research, France'};   
+
+metaData.author   = {'Helene Baillif'};    
+metaData.date_subm = [2019 03 13];              
 metaData.email    = {''};            
-metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
+metaData.address  = {'Joint research unit "Behavioral Ecology and Fish Population Biology", National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
 
 %% set data
 %% zero-variate data
@@ -26,50 +36,53 @@ metaData.address  = {'ECOBIOP, National Institute for Agronomic Research - Unive
 %% Age at hatching
 % T-ah data are used instead.
 
-% data.ah = 115;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Carrick1979';     comment.ah = 'parents from River Kent (Cumbria, northern England)';
-%  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
-%data.ah_Norway = 258;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Wallace1988';     comment.ah = 'median of five wild Norwegian stocks';
-%  temp.ah = C2K(0.17);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
-%data.ah = 207;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Wallace1988';     comment.ah = 'median of five wild Norwegian stocks';
-%  temp.ah = C2K(1.00);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
-%data.ah_Norway = 144;    units.ah = 'd';    label.ah = 'age at hatching';             bibkey.ah = 'Berg2001';     comment.ah = 'parents from river Stj첩rdalselva (Norway)';
-%  temp.ah = C2K(4);  units.temp.ah = 'K'; label.temp.ah = 'temperature';
+% data.ah_England = 115;    units.ah_England = 'd';    label.ah_England = 'age at hatching';             bibkey.ah_England = 'Carrick1979';     comment.ah_England = 'parents from River Kent (Cumbria, northern England)';
+%  temp.ah_England = C2K(4);  units.temp.ah_England = 'K'; label.temp.ah_England = 'temperature';
+%data.ah_Norway1 = 258;    units.ah_Norway1 = 'd';    label.ah_Norway1 = 'age at hatching';             bibkey.ah_Norway1 = 'Wallace1988';     comment.ah_Norway1 = 'median of five wild Norwegian stocks';
+%  temp.ah_Norway1 = C2K(0.17);  units.temp.ah_Norway1 = 'K'; label.temp.ah_Norway1 = 'temperature';
+%data.ah_Norway2 = 207;    units.ah_Norway2 = 'd';    label.ah_Norway2 = 'age at hatching';             bibkey.ah_Norway2 = 'Wallace1988';     comment.ah_Norway2 = 'median of five wild Norwegian stocks';
+%  temp.ah_Norway2 = C2K(1.00);  units.temp.ah_Norway2 = 'K'; label.temp.ah_Norway2 = 'temperature';
+%data.ah_Norway3 = 144;    units.ah_Norway3 = 'd';    label.ah_Norway3 = 'age at hatching';             bibkey.ah_Norway3 = 'Berg2001';     comment.ah_Norway3 = 'parents from river Stjardalselva (Norway)';
+%  temp.ah_Norway3 = C2K(4);  units.temp.ah_Norway3 = 'K'; label.temp.ah_Norway3 = 'temperature';
 
 %% Age at first feeding
 % T-ab data are used instead.
 
-% data.ab = 196;    units.ab = 'd';    label.ab = 'age at birth';             bibkey.ab = 'Berg2001';     comment.ab = 'parents from river Stj첩rdalselva (Norway)';
-%   temp.ab = C2K(4);  units.temp.ab = 'K'; label.temp.ab = 'temperature';
+% data.ab_Norway3 = 196;    units.ab_Norway3 = 'd';    label.ab_Norway3 = 'age at birth';             bibkey.ab_Norway3 = 'Berg2001';     comment.ab_Norway3 = 'parents from river Stjardalselva (Norway)';
+%   temp.ab_Norway3 = C2K(4);  units.temp.ab_Norway3 = 'K'; label.temp.ab_Norway3 = 'temperature';
+
+%% Age at metamorphosis
+% No data
 
 %% Age at smoltification
 
-% data.as = 2.265*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.as = 'Hutchings1998'; comment.as = 'median of Scottish populations';
-%   temp.as = C2K(10);  units.temp.as = 'K'; label.temp.as = 'temperature'; comment.temp.as = 'rough guess - highly variable temperature throughout life';
-% data.as = 1.04*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'Nivelle';
-%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
-% data.as = 3.03*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
-%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
-% data.as = 2.6*365.25;    units.as = 'd';    label.as = 'age at smoltification'; bibkey.tj = 'Jutila2006'; comment.tj = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004';
-%   temp.as = C2K();  units.temp.as = 'K'; label.temp.as = 'temperature';
+% data.as_Scotland = 2.265*365.25;    units.as_Scotland = 'd';    label.as_Scotland = 'age at smoltification'; bibkey.as_Scotland = 'Hutchings1998'; comment.as_Scotland = 'median of Scottish populations - temperature is a rough guess (variable temperature throughout life)';
+%   temp.as_Scotland = C2K(10);  units.temp.as_Scotland = 'K'; label.temp.as_Scotland = 'temperature';
+% data.as_Nivelle = 1.04*365.25;    units.as_Nivelle = 'd';    label.as_Nivelle = 'age at smoltification'; bibkey.as_Nivelle = 'Hutchings1998'; comment.as_Nivelle = 'Nivelle - temperature is a rough guess (variable temperature throughout life)';
+%   temp.as_Nivelle = C2K(15);  units.temp.as_Nivelle = 'K'; label.temp.as_Nivelle = 'temperature';
+% data.as_Iceland = 3.03*365.25;    units.as_Iceland = 'd';    label.as_Iceland = 'age at smoltification'; bibkey.as_Iceland = 'Hutchings1998'; comment.as_Iceland = 'median of Icelandic populations - temperature is a rough guess (variable temperature throughout life)';
+%   temp.as_Iceland = C2K(5);  units.temp.as_Iceland = 'K'; label.temp.as_Iceland = 'temperature';
+% data.as_Simojoki = 2.6*365.25;    units.as_Simojoki = 'd';    label.as_Simojoki = 'age at smoltification'; bibkey.as_Simojoki = 'Jutila2006'; comment.as_Simojoki = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 2004 - temperature is a rough guess (variable temperature throughout life)';
+%   temp.as_Simojoki = C2K(10);  units.temp.as_Simojoki = 'K'; label.temp.as_Simojoki = 'temperature';
 
-%% Age at maturity (or age at first spawning minus 1 year)
+%% Age at puberty (taken as age at first spawning minus 1 year)
 
-% data.tp = ;    units.tp = 'd';    label.tp = 'time since birth at puberty';     bibkey.tp = '';  comment.tp = '';
-%   temp.tp = C2K();  units.temp.tp = 'K'; label.temp.tp = 'temperature'; comment.temp.tp = '';
- data.ap = (2.265+1.39)*365.25;    units.ap = 'd';    label.ap = 'age at puberty';  bibkey.ap = 'Hutchings1998'; comment.ap = 'median of Scottish populations';
-  temp.ap = C2K(10);  units.temp.ap = 'K'; label.temp.ap = 'temperature'; comment.temp.ap = 'rough guess - highly variable temperature throughout life';
-% data.ap = (1.04+1.17)*365.25;    units.ap = 'd';    label.ap = 'age at puberty';           bibkey.ap = 'Hutchings1998'; comment.tj = 'Nivelle';
-%   temp.ap = C2K();  units.temp.ap = 'K'; label.temp.ap = 'temperature';
-% data.ap = (3.03+1.48)*365.25;    units.ap = 'd';    label.ap = 'age at puberty';           bibkey.ap = 'Hutchings1998'; comment.tj = 'median of Icelandic populations';
-%   temp.ap = C2K();  units.temp.ap = 'K'; label.temp.ap = 'temperature';
+ data.ap_Scotland = (2.265+1.39)*365.25;    units.ap_Scotland = 'd';    label.ap_Scotland = 'age at puberty';  bibkey.ap_Scotland = 'Hutchings1998'; comment.ap_Scotland = 'median of Scottish populations - temperature is a rough guess (variable temperature throughout life)';
+  temp.ap_Scotland = C2K(10);  units.temp.ap_Scotland = 'K'; label.temp.ap_Scotland = 'temperature';
+data.ap_Nivelle = (1.04+1.17)*365.25;    units.ap_Nivelle = 'd';    label.ap_Nivelle = 'age at puberty'; bibkey.ap_Nivelle = 'Hutchings1998'; comment.ap_Nivelle = 'Nivelle - temperature is a rough guess (variable temperature throughout life)';
+  temp.ap_Nivelle = C2K(15);  units.temp.ap_Nivelle = 'K'; label.temp.ap_Nivelle = 'temperature';
+data.ap_Iceland = (3.03+1.48)*365.25;    units.ap_Iceland = 'd';    label.ap_Iceland = 'age at puberty';           bibkey.ap_Iceland = 'Hutchings1998'; comment.ap_Iceland = 'median of Icelandic populations - temperature is a rough guess (variable temperature throughout life)';
+  temp.ap_Iceland = C2K(5);  units.temp.ap_Iceland = 'K'; label.temp.ap_Iceland = 'temperature';
 
-%% Lifespan (mean or maximum?)
+%% Lifespan (mean)
 
-data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'life span';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations';
-  temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
+data.am = (2.265+2.39)*365.25;    units.am = 'd';    label.am = 'life span';  bibkey.am = 'Hutchings1998'; comment.am = 'median of Scottish populations - temperature is a rough guess (variable temperature throughout life)';
+  temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature';
 
-% data.am = 13*365.25;    units.am = 'd';    label.am = 'life span';                bibkey.am = 'Flower1935';   comment.am = 'maximum lifespan - females caught in loch Maree on 10th May, 1924';
-%   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature'; comment.temp.am = 'rough guess - highly variable temperature throughout life';
+%% Lifespan (maximum)
+
+% data.am = 13*365.25;    units.am = 'd';    label.am = 'life span'; bibkey.am = 'Flower1935';   comment.am = 'maximum lifespan - females caught in loch Maree on 10th May, 1924 - temperature is a rough guess (variable temperature throughout life)';
+%   temp.am = C2K(10);  units.temp.am = 'K'; label.temp.am = 'temperature';
 
 %% Length at hatching
 
@@ -121,6 +134,9 @@ data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   
 % data.Lb  = 2.5;   units.Lb  = 'cm';  label.Lb  = 'total length at birth';   bibkey.Lb  = 'Srivastava1991';  comment.Wwb = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 %  temp.Lb = C2K(7);  units.temp.Lb = 'K'; label.temp.Lb = 'temperature';
 
+%% Length at metamorphosis
+% No data
+
 %% Length at precocious maturation (males only)
 
 % data.Lpp  = ;   units.Lpp  = 'cm';  label.Lpp  = 'total length at precocious puberty'; bibkey.Lpp  = ''; comment.Lpp = 'males only';
@@ -133,7 +149,7 @@ data.Lh  = 2.09;   units.Lh  = 'cm';  label.Lh  = 'total length at hatching';   
 % data.Ls  = 15.5;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1972 to 1991';
 % data.Ls  = 14.7;   units.Ls  = 'cm';  label.Ls  = 'total length at smoltification'; bibkey.Ls  = 'Jutila2006'; comment.Ls = 'Simojoki (Baltic Sea, Finland) - mean from 1992 to 2004';
 
-%% Length at maturity (or 1 year before first spawning)
+%% Length at puberty (taken as 1 year before first spawning)
 
 % data.Lp  = ;   units.Lp  = 'cm';  label.Lp  = 'total length at puberty'; bibkey.Lp  = ''; 
 
@@ -164,10 +180,10 @@ data.Li  = 95;   units.Li  = 'cm';  label.Li  = 'ultimate total length';   bibke
 
 %% Weight at hatching
 
- data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4째C - parents from River Kent (Cumbria, northern England)';
+ data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4캜 - parents from River Kent (Cumbria, northern England)';
 % data.Wwh = 0.117;   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Srivastava1991';  comment.Wwh = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 
-% data.Wdh = 0.0552;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Carrick1979';  comment.Wdh = 'at 4째C - parents from River Kent (Cumbria, northern England)';
+% data.Wdh = 0.0552;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Carrick1979';  comment.Wdh = 'at 4캜 - parents from River Kent (Cumbria, northern England)';
 % data.Wdh = 0.034;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Srivastava1991';  comment.Wdh = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 
 %% Weight at first feeding
@@ -216,7 +232,7 @@ data.Ri  = 14499/365.25;   units.Ri  = '#/d'; label.Ri  = 'maximum reprod rate';
 
 %% T-ah data
 
-data.Tah = [ ... % temperature (째C), age at hatching (d)
+data.Tah = [ ... % temperature (캜), age at hatching (d)
 2  155
 4  126
 6  84
@@ -227,7 +243,7 @@ data.Tah(:,1)=C2K(data.Tah(:,1));
 units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
 bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brunswick - Canada)';
 
-% data.Tah = [ ... % temperature (째C), age at hatching (d)
+% data.Tah = [ ... % temperature (캜), age at hatching (d)
 % 8  63
 % 10 49.2
 % 12 37.75];
@@ -235,7 +251,7 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 %units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
 %bibkey.Tah = 'Gunnes1979'; comment.Tah = 'Norwegian strain (wild or domestic?)';
 
-%data.Tah = [ ... % temperature (째C), age at hatching (d)
+%data.Tah = [ ... % temperature (캜), age at hatching (d)
 %4.8  116.5
 %6  92.5
 %6.3  88];
@@ -245,13 +261,32 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 
 %% T-ab data
 
-data.Tab = [ ... % temperature (째C), age at yolk exhaustion (d)
-2 238
-6 177
-12  64];
+% data.Tab_Peterson1977 = [ ... % temperature (캜), age at yolk exhaustion (d)
+% 2 238
+% 6 177
+% 12  64];
+% data.Tab_Peterson1977(:,1)=C2K(data.Tab_Peterson1977(:,1));
+% units.Tab_Peterson1977   = {'K', 'd'};  label.Tab_Peterson1977 = {'temperature', 'age at birth'}; 
+% bibkey.Tab_Peterson1977 = 'Peterson1977'; comment.Tab_Peterson1977 = 'parents from Dennis Stream (New Brunswick - Canada)';
+
+data.Tab = [ ... % temperature (캜), age at emergence (d)
+0.0 390.6
+0.4 357.8
+1.0 315.6
+1.6 278.1
+2.7 220.9
+3.9 176.6
+4.9 149.4
+6.0 124.1
+7.0 102.5
+8.0 88.8
+9.0 78.1
+9.8 69.4
+11.0 60.9];
 data.Tab(:,1)=C2K(data.Tab(:,1));
 units.Tab   = {'K', 'd'};  label.Tab = {'temperature', 'age at birth'}; 
-bibkey.Tab = 'Peterson1977'; comment.Tab = 'parents from Dennis Stream (New Brunswick - Canada)';
+bibkey.Tab = 'Gorodilov1996'; comment.Tab = 'eggs from hatcheries on various rivers of the Baltic Sea (Neva, Narova and Salatsa) and the Barentz Sea (Cola River) basins (Russia)';
+
 
 %% t-L data
 
@@ -266,7 +301,7 @@ bibkey.Tab = 'Peterson1977'; comment.Tab = 'parents from Dennis Stream (New Brun
 %540  23.8
 %568  27.6];
 %units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};  
-%temp.tL    = C2K(10);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature between 8 and 12째C';
+%temp.tL    = C2K(10);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature between 8 and 12캜';
 %bibkey.tL = 'Rottiers1993'; comment.tL = 'Penobscot River strain (USA)';
 
 data.tL = [ ... % time since emergence (d), fork length (cm)
@@ -303,7 +338,7 @@ data.tL = [ ... % time since emergence (d), fork length (cm)
 49  4.3
 49  4.6];
 units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};  
-temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4째C to 14.1째C throughout the experiment';
+temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4캜 to 14.1캜 throughout the experiment';
 bibkey.tL = 'Einum2000'; comment.tL = 'Imsa River (Norway)';
 
 % data.tL_f0 = [ ... % time (d), fork length (cm) without food
@@ -343,7 +378,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 
 %% t-W data in embryos
 
-%data.tWwe_T12 = [ ... % time since fertilization (d), wet weight (g) at 12째C
+%data.tWwe_T12 = [ ... % time since fertilization (d), wet weight (g) at 12캜
 %38 0.1045
 %42 0.1284
 %46 0.1585
@@ -355,7 +390,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T12    = C2K(12);  units.temp.tWwe_T12 = 'K'; label.temp.tWwe_T12 = 'temperature';
 %bibkey.tWwe_T12 = 'Gunnes1979'; comment.tWwe_T12 = 'Norwegian strain (wild or domestic?)';
 
-%data.tWwe_T10 = [ ... % time since fertilization (d), wet weight (g) at 10째C
+%data.tWwe_T10 = [ ... % time since fertilization (d), wet weight (g) at 10캜
 %38 0.1036
 %42 0.1201
 %46 0.1236
@@ -367,7 +402,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T10    = C2K(10);  units.temp.tWwe_T10 = 'K'; label.temp.tWwe_T10 = 'temperature';
 %bibkey.tWwe_T10 = 'Gunnes1979'; comment.tWwe_T10 = 'Norwegian strain (wild or domestic?)';
 
-%data.tWwe_T8 = [ ... % time since fertilization (d), wet weight (g) at 8째C
+%data.tWwe_T8 = [ ... % time since fertilization (d), wet weight (g) at 8캜
 %38 0.0988
 %42 0.1136
 %46 0.1172
@@ -379,7 +414,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T8    = C2K(8);  units.temp.tWwe_T8 = 'K'; label.temp.tWwe_T8 = 'temperature';
 %bibkey.tWwe_T8 = 'Gunnes1979'; comment.tWwe_T8 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T12 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 12째C
+data.tWwVe_T12 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 12캜
 38 0.0128
 42 0.0301
 46 0.0405
@@ -391,7 +426,7 @@ units.tWwVe_T12   = {'d', 'g'};  label.tWwVe_T12 = {'time since fertilization', 
 temp.tWwVe_T12    = C2K(12);  units.temp.tWwVe_T12 = 'K'; label.temp.tWwVe_T12 = 'temperature';
 bibkey.tWwVe_T12 = 'Gunnes1979'; comment.tWwVe_T12 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T10 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 10째C
+data.tWwVe_T10 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 10캜
 38 0.0138
 42 0.0311
 46 0.0366
@@ -403,7 +438,7 @@ units.tWwVe_T10   = {'d', 'g'};  label.tWwVe_T10 = {'time since fertilization', 
 temp.tWwVe_T10    = C2K(10);  units.temp.tWwVe_T10 = 'K'; label.temp.tWwVe_T10 = 'temperature';
 bibkey.tWwVe_T10 = 'Gunnes1979'; comment.tWwVe_T10 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T8 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 8째C
+data.tWwVe_T8 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 8캜
 38 0.0128
 42 0.0270
 46 0.0331
@@ -415,7 +450,7 @@ units.tWwVe_T8   = {'d', 'g'};  label.tWwVe_T8 = {'time since fertilization', 'w
 temp.tWwVe_T8    = C2K(8);  units.temp.tWwVe_T8 = 'K'; label.temp.tWwVe_T8 = 'temperature';
 bibkey.tWwVe_T8 = 'Gunnes1979'; comment.tWwVe_T8 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T12 = [ ... % time since fertilization (d), yolk wet weight (g) at 12째C
+data.tWwYe_T12 = [ ... % time since fertilization (d), yolk wet weight (g) at 12캜
 38 0.0809
 42 0.0735
 46 0.0784
@@ -427,7 +462,7 @@ units.tWwYe_T12   = {'d', 'g'};  label.tWwYe_T12 = {'time since fertilization', 
 temp.tWwYe_T12    = C2K(12);  units.temp.tWwYe_T12 = 'K'; label.temp.tWwYe_T12 = 'temperature';
 bibkey.tWwYe_T12 = 'Gunnes1979'; comment.tWwYe_T12 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T10 = [ ... % time since fertilization (d), yolk wet weight (g) at 10째C
+data.tWwYe_T10 = [ ... % time since fertilization (d), yolk wet weight (g) at 10캜
 38 0.0786
 42 0.0767
 46 0.0660
@@ -439,7 +474,7 @@ units.tWwYe_T10   = {'d', 'g'};  label.tWwYe_T10 = {'time since fertilization', 
 temp.tWwYe_T10    = C2K(10);  units.temp.tWwYe_T10 = 'K'; label.temp.tWwYe_T10 = 'temperature';
 bibkey.tWwYe_T10 = 'Gunnes1979'; comment.tWwYe_T10 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T8 = [ ... % time since fertilization (d), yolk wet weight (g) at 8째C
+data.tWwYe_T8 = [ ... % time since fertilization (d), yolk wet weight (g) at 8캜
 38 0.0786
 42 0.0765
 46 0.0723
@@ -465,7 +500,7 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %540 110.6
 %568 188.3];
 %units.tWw   = {'d', 'g'};  label.tWw = {'time since birth', 'wet weight'};  
-%temp.tWw    = C2K(10);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature between 8 and 12째C';
+%temp.tWw    = C2K(10);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature between 8 and 12캜';
 %bibkey.tWw = 'Rottiers1993'; comment.tWw = 'Penobscot River strain (USA)';
 
 %data.tWd = [ ... % time since first feeding (d), dry weight (g)
@@ -479,7 +514,7 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %540 110.6*(1-0.716)
 %568 188.3*(1-0.707)];
 %units.tWd   = {'d', 'g'};  label.tWd = {'time since birth', 'dry weight'};  
-%temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature'; comment.temp.tWd = 'temperature between 8 and 12째C';
+%temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature'; comment.temp.tWd = 'temperature between 8 and 12캜';
 %bibkey.tWd = 'Rottiers1993'; comment.tWd = 'Penobscot River strain (USA)';
 
 %data.tWw = [ ... % time since yolk absorption (d), wet weight (g)
@@ -487,12 +522,12 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %448  81.6
 %463  100.7]';
 %units.tWw   = {'d', 'g'};  label.tWw = {'time since birth', 'wet weight'};  
-%temp.tWw    = C2K(12);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature increasing from 10.4째C to 14.1째C throughout the experiment';
+%temp.tWw    = C2K(12);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature increasing from 10.4캜 to 14.1캜 throughout the experiment';
 %bibkey.tWw = 'Einum2000'; comment.tWw = 'Imsa River (Norway)';
 
 %% t-W data in seawater
 
-data.tWw_T4 = [ ...  % time since transfer in seawater (d), wet weight (g) at 4째C
+data.tWw_T4 = [ ...  % time since transfer in seawater (d), wet weight (g) at 4캜
 22 61.8
 63 74.5
 90 78.1];
@@ -500,7 +535,7 @@ units.tWw_T4   = {'d', 'g'};  label.tWw_T4 = {'time since metamorphosis', 'wet w
 temp.tWw_T4    = C2K(4);  units.temp.tWw_T4 = 'K'; label.temp.tWw_T4 = 'temperature';
 bibkey.tWw_T4 = 'Handeland1998'; comment.tWw_T4 = 'domestic strain';
 
-data.tWw_T8 = [ ...  % time since transfer in seawater (d), wet weight (g) at 8째C
+data.tWw_T8 = [ ...  % time since transfer in seawater (d), wet weight (g) at 8캜
 22 63.6
 63 105.9
 90 132.6];
@@ -508,7 +543,7 @@ units.tWw_T8   = {'d', 'g'};  label.tWw_T8 = {'time since metamorphosis', 'wet w
 temp.tWw_T8   = C2K(8);  units.temp.tWw_T8 = 'K'; label.temp.tWw_T8 = 'temperature';
 bibkey.tWw_T8 = 'Handeland1998'; comment.tWw_T8 = 'domestic strain';
 
-data.tWw_T6 = [ ... % time since tranfer to seawater (d), wet weight (g) at 6째C
+data.tWw_T6 = [ ... % time since tranfer to seawater (d), wet weight (g) at 6캜
 0  75.8
 14 77.4
 28 88.7
@@ -520,7 +555,7 @@ units.tWw_T6   = {'d', 'g'};  label.tWw_T6 = {'time since metamorphosis', 'wet w
 temp.tWw_T6   = C2K(6);  units.temp.tWw_T6 = 'K'; label.temp.tWw_T6 = 'temperature';
 bibkey.tWw_T6 = 'Handeland2008'; comment.tWw_T6 = 'AquaGen domestic strain';
 
-data.tWw_T10 = [ ... % time since tranfer to seawater (d), wet weight (g) at 10째C
+data.tWw_T10 = [ ... % time since tranfer to seawater (d), wet weight (g) at 10캜
 0  75.8
 14 83.8
 28 108.0
@@ -532,7 +567,7 @@ units.tWw_T10   = {'d', 'g'};  label.tWw_T10 = {'time since metamorphosis', 'wet
 temp.tWw_T10   = C2K(10);  units.temp.tWw_T10 = 'K'; label.temp.tWw_T10 = 'temperature';
 bibkey.tWw_T10 = 'Handeland2008'; comment.tWw_T10 = 'AquaGen domestic strain';
   
-data.tWw_T14 = [ ... % time since tranfer to seawater (d), wet weight (g) at 14째C
+data.tWw_T14 = [ ... % time since tranfer to seawater (d), wet weight (g) at 14캜
 0  75.8
 14 83.8
 28 116.1
@@ -544,7 +579,7 @@ units.tWw_T14   = {'d', 'g'};  label.tWw_T14 = {'time since metamorphosis', 'wet
 temp.tWw_T14   = C2K(14);  units.temp.tWw_T14 = 'K'; label.temp.tWw_T14 = 'temperature';
 bibkey.tWw_T14 = 'Handeland2008'; comment.tWw_T14 = 'AquaGen domestic strain';
 
-data.tWw_T18 = [ ... % time since tranfer to seawater (d), wet weight (g) at 18째C
+data.tWw_T18 = [ ... % time since tranfer to seawater (d), wet weight (g) at 18캜
 0	75.8
 14	88.7
 28	116.1
@@ -853,7 +888,7 @@ bibkey.LWw_parrs = 'Sutton2000'; comment.LWw_parrs = 'Northeast Brook, Newfoundl
 %23.8 110.6
 %27.6 188.3];
 %units.LWw   = {'cm', 'g'};  label.LWw = {'total length', 'wet weight'};  
-%bibkey.LWw = 'Rottiers1993'; comment.LWw = 'Penobscot River strain (USA) - temperature between 8 and 12째C';
+%bibkey.LWw = 'Rottiers1993'; comment.LWw = 'Penobscot River strain (USA) - temperature between 8 and 12캜';
 
 data.LWw_spawners = [ ... % fork length (cm), wet weight (g)
 60 1500
@@ -1123,7 +1158,7 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 %23.8 110.6*(1-0.716)
 %27.6 188.3*(1-0.707)];
 %units.LWd   = {'cm', 'g'};  label.LWd = {'total length', 'dry weight'};  
-%bibkey.LWd = 'Rottiers1993'; comment.LWd = 'Penobscot River strain (USA) - temperature between 8 and 12째C';
+%bibkey.LWd = 'Rottiers1993'; comment.LWd = 'Penobscot River strain (USA) - temperature between 8 and 12캜';
 
 %% Wd-Ww data
 % These data are not to be used unless we suspect d_V = Wd/Ww might subtantially
@@ -1160,7 +1195,7 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 % 110.6*(1-0.716)  110.6
 % 188.3*(1-0.707)  188.3];
 % units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
-% bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12째C';
+% bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12캜';
 %   
 % data.WdWw = [ ... % dry weight (g), wet weight (g)
 % 81.9*0.303 81.9
@@ -1326,10 +1361,13 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 %units.tLipid   = {'d', 'g'};  label.tLipid = {'time since birth', 'lipid'};  
 %temp.tLipid    = C2K(10);  units.temp.tLipid = 'K'; label.temp.tLipid = 'temperature';
 %bibkey.tLipid = 'Rottiers1993';
-%comment.tLipid = 'Penobscot River strain (USA) - temperature between 8 and 12째C';
+%comment.tLipid = 'Penobscot River strain (USA) - temperature between 8 and 12캜';
 
 %% set weights for all real data
 weights = setweights(data, []);
+weights.ap_Scotland = weights.ap_Scotland/3;
+weights.ap_Nivelle = weights.ap_Nivelle/3;
+weights.ap_Iceland = weights.ap_Iceland/3;
 weights.tWwVe_T8 = weights.tWwVe_T8/3;
 weights.tWwYe_T8 = weights.tWwYe_T8/3;
 weights.tWwVe_T10 = weights.tWwVe_T10/3;
@@ -1562,7 +1600,7 @@ metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 bibkey = 'Wallace1988'; type = 'Article'; bib = [ ... 
 'author = {Wallace, J. C. and Heggberget, T. G.}, ' ... 
 'year = {1988}, ' ...
-'title = {Incubation of eggs of Atlantic salmon (Salmo salar)  from different Norwegian streams at  temperatures below 1째C.}, ' ...
+'title = {Incubation of eggs of Atlantic salmon (Salmo salar)  from different Norwegian streams at  temperatures below 1캜.}, ' ...
 'journal = {Journal of Fisheries and Aquatic Science}, ' ...
 'volume = {45}, ' ...
 'number = {1}, ' ...
