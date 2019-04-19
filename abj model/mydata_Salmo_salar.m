@@ -67,7 +67,7 @@ metaData.address  = {'Joint research unit "Behavioral Ecology and Fish Populatio
 
 %% Age at puberty (taken as age at first spawning minus 1 year)
 
- data.ap_Scotland = (2.265+1.39)*365.25;    units.ap_Scotland = 'd';    label.ap_Scotland = 'age at puberty';  bibkey.ap_Scotland = 'Hutchings1998'; comment.ap_Scotland = 'median of Scottish populations - temperature is a rough guess (variable temperature throughout life)';
+data.ap_Scotland = (2.265+1.39)*365.25;    units.ap_Scotland = 'd';    label.ap_Scotland = 'age at puberty';  bibkey.ap_Scotland = 'Hutchings1998'; comment.ap_Scotland = 'median of Scottish populations - temperature is a rough guess (variable temperature throughout life)';
   temp.ap_Scotland = C2K(10);  units.temp.ap_Scotland = 'K'; label.temp.ap_Scotland = 'temperature';
 data.ap_Nivelle = (1.04+1.17)*365.25;    units.ap_Nivelle = 'd';    label.ap_Nivelle = 'age at puberty'; bibkey.ap_Nivelle = 'Hutchings1998'; comment.ap_Nivelle = 'Nivelle - temperature is a rough guess (variable temperature throughout life)';
   temp.ap_Nivelle = C2K(15);  units.temp.ap_Nivelle = 'K'; label.temp.ap_Nivelle = 'temperature';
@@ -341,12 +341,12 @@ units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};
 temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4°C to 14.1°C throughout the experiment';
 bibkey.tL = 'Einum2000'; comment.tL = 'Imsa River (Norway)';
 
-% data.tL_f0 = [ ... % time (d), fork length (cm) without food
-% 0 20.9
-% 28 21.3];
-% units.tL_f0   = {'d', 'cm'};  label.tL_f0 = {'time', 'total length'};  
-% temp.tL_f0    = C2K(7.3);  units.temp.tL_f0 = 'K'; label.temp.tL_f0 = 'temperature';
-% bibkey.tL_f0 = 'Stefansson2009'; comment.tL_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+data.tL_f0 = [ ... % time (d), fork length (cm) without food
+0 20.9
+28 21.3];
+units.tL_f0   = {'d', 'cm'};  label.tL_f0 = {'time', 'total length'};  
+temp.tL_f0    = C2K(7.3);  units.temp.tL_f0 = 'K'; label.temp.tL_f0 = 'temperature';
+bibkey.tL_f0 = 'Stefansson2009'; comment.tL_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
 
 data.tL_f25 = [ ... % time (d), fork length (cm) at 25% ad libitum food
 0 20.3
@@ -609,12 +609,12 @@ bibkey.tWw_T18 = 'Handeland2008'; comment.tWw_T18 = 'AquaGen domestic strain';
 %temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature';
 %bibkey.tWd = 'ElMowafi1997'; comment.tWd = 'probably a domestic strain';
 
-% data.tWw_f0 = [ ... % time (d), wet weight (g) without food
-% 0 89.4
-% 28 83.8];
-% units.tWw_f0   = {'d', 'g'};  label.tWw_f0 = {'time', 'wet weight'};  
-% temp.tWw_f0    = C2K(7.3);  units.temp.tWw_f0 = 'K'; label.temp.tWw_f0 = 'temperature';
-% bibkey.tWw_f0 = 'Stefansson2009'; comment.tWw_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
+data.tWw_f0 = [ ... % time (d), wet weight (g) without food
+0 89.4
+28 83.8];
+units.tWw_f0   = {'d', 'g'};  label.tWw_f0 = {'time', 'wet weight'};  
+temp.tWw_f0    = C2K(7.3);  units.temp.tWw_f0 = 'K'; label.temp.tWw_f0 = 'temperature';
+bibkey.tWw_f0 = 'Stefansson2009'; comment.tWw_f0 = 'post-smolts in seawater - NLA strain (Norwegian Salmon Breeding Ltd.)';
 
 data.tWw_f25 = [ ... % time (d), wet weight (g) at 25% ad libitum food
 0 81.0
@@ -1380,10 +1380,12 @@ weights.tWw_T6 = weights.tWw_T6/6;
 weights.tWw_T10 = weights.tWw_T10/6;
 weights.tWw_T14 = weights.tWw_T14/6;
 weights.tWw_T18 = weights.tWw_T18/6;
+weights.tL_f0 = weights.tL_f0/4;
 weights.tL_f25 = weights.tL_f25/4;
 weights.tL_f50 = weights.tL_f50/4;
 weights.tL_f75 = weights.tL_f75/4;
 weights.tL_f100 = weights.tL_f100/4;
+weights.tWw_f0 = weights.tWw_f0/4;
 weights.tWw_f25 = weights.tWw_f25/4;
 weights.tWw_f50 = weights.tWw_f50/4;
 weights.tWw_f75 = weights.tWw_f75/4;
@@ -1403,8 +1405,8 @@ txtData.bibkey = bibkey;
 txtData.comment = comment;
 
 %% Group plots
-set1 = {'tL_f25','tL_f50','tL_f75','tL_f100'}; comment1 = {''};
-set2 = {'tWw_f25','tWw_f50','tWw_f75','tWw_f100'}; comment2 = {''};
+set1 = {'tL_f0','tL_f25','tL_f50','tL_f75','tL_f100'}; comment1 = {''};
+set2 = {'tWw_f0','tWw_f25','tWw_f50','tWw_f75','tWw_f100'}; comment2 = {''};
 set3 = {'tWwVe_T8','tWwVe_T10','tWwVe_T12'}; comment3 = {''};
 set4 = {'tWwYe_T8','tWwYe_T10','tWwYe_T12'}; comment4 = {''};
 set5 = {'tWw_T4','tWw_T6','tWw_T8','tWw_T10','tWw_T14','tWw_T18'}; comment5 = {''};
@@ -1682,4 +1684,16 @@ bibkey = 'Solberg2014'; type = 'Article'; bib = [ ...
 'doi = {10.1371/journal.pone.0113697}, ' ...
 'pages = {e113697}'];
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
+
+%
+bibkey = 'Stefansson2009'; type = 'Article'; bib = [ ... 
+'author = {Stefansson, Sigurd O. and Imsland, Albert K. and Handeland, Sigurd O.}, ' ... 
+'year = {2009}, ' ...
+'title = {Food-deprivation, compensatory growth and hydro-mineral balance in Atlantic salmon (Salmo salar) post-smolts in sea water}, ' ...
+'journal = {Aquaculture}, ' ...
+'volume = {290}, ' ...
+'doi = {10.1016/j.aquaculture.2009.02.024}, ' ...
+'pages = {243-249}'];
+metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
+
 

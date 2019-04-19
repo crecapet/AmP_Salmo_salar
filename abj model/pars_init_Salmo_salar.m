@@ -42,7 +42,7 @@ par.f_tLWw_f100 = 1;    free.f_tLWw_f100 = 0;   units.f_tLWw_f100 = '-';    labe
 par.f_tLWw_f25 = 0.25;  free.f_tLWw_f25 = 0;   units.f_tLWw_f25 = '-';     label.f_tLWw_f25 = 'scaled functional response for growth data at different food levels'; 
 par.f_tLWw_f50 = 0.5;   free.f_tLWw_f50 = 0;   units.f_tLWw_f50 = '-';     label.f_tLWw_f50 = 'scaled functional response for growth data at different food levels'; 
 par.f_tLWw_f75 = 0.75;  free.f_tLWw_f75 = 0;   units.f_tLWw_f75 = '-';     label.f_tLWw_f75 = 'scaled functional response for growth data at different food levels'; 
-par.t0_tLWwf = 300;    free.t0_tLWwf   = 0;   units.t0_tLWwf = 'd';          label.t0_tLWwf = 'time since birth at 0 time for growth at different food levels'; 
+% par.t0_tLWwf = 300;    free.t0_tLWwf   = 0;   units.t0_tLWwf = 'd';          label.t0_tLWwf = 'time since birth at 0 time for growth at different food levels'; 
 par.f_tWeVe_tWeYe = 1;  free.f_tWeVe_tWeYe = 0;   units.f_tWeVe_tWeYe = '-';  label.f_tWeVe_tWeYe = 'scaled functional response for embryo growth'; 
 par.f_tW = 1;         free.f_tW  = 0;   units.f_tW = '-';         label.f_tW = 'scaled functional response for time-weigth data'; 
 par.W_0 = 81.9;       free.W_0   = 0;   units.W_0 = 'g';          label.W_0 = 'initial weigth in time-weigth data'; 
