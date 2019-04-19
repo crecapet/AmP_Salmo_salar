@@ -4,7 +4,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   cPar = parscomp_st(par); vars_pull(par); 
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
-     filterChecks = E_Hh < 0 || E_Hh > E_Hb || H_Hb > E_Hj;
+     filterChecks = E_Hh < 0 || E_Hh > E_Hb || E_Hb > E_Hj;
   
   if filterChecks  
     info = 0;
@@ -341,13 +341,13 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 
   % time-length and time-weight at different food levels
   
-  % T_tLWw_f = [repelem(9.6,129), 11.5 + (17-11.5) * [0:53]/53, repelem(16,90), 14 + (7.6 - 14) * [0:27]/27] % temperature profile from birth to start of experiment
+  % temperature profile from birth to start of experiment
+  % T_tLWw_f = [repelem(9.6,129), 11.5 + (17-11.5) * [0:53]/53, repelem(16,90), 14 + (7.6 - 14) * [0:27]/27]
   % t0_tLWw_f = 300 % time since birth at start of experiment
-  % Growth is assumed to occur after metamorphosis.
   
   % no food
-%   F = f_tL_f0; 
-%   delta_L = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - t_j)); % cm, expected growth over 28 days
+%   F = f_tLWw_f0; 
+%   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
 %   rT_B = TC_tL_f0 * rho_B * k_M;  % 1/d, von Bert growth rate   
 %   rT_j = TC_tL_f0 * rho_j * k_M;  % 1/d, exponential growth rate
 %   aT_b = tau_b/ k_M/ TC_tL_f0; aT_j = tau_j/ k_M/ TC_tL_f0;   
@@ -363,9 +363,19 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 %   EWw_f0 = (tL_f0(:,2) * del_M).^3 * (1 + F * ome); % g, wet weight
 
   % 25 percent food
-  F = f_tL_f25;
-  rT_B = TC_tL_f25 * rho_B * k_M;  % 1/d, von Bert growth rate   
-  rT_j = TC_tL_f25 * rho_j * k_M;  % 1/d, exponential growth rate
+  F = f_tLWw_f25;
+  
+  L_init = tL_f25(1,2) * del_M; % cm, initial body length
+  E_init = 1 * E_m * L_init^3; % J, initial energy in the body - food ad libitum before the start of the experiment
+  
+  s_M  = L_j/ L_b; % -, acceleration factor
+  TC = TC_tN;
+  time = tN1(:,1); % d, time
+  
+  rT_B = TC_tL_f25 * k_M / (3 * (1 + F / g));  % 1/d, von Bert growth rate
+  L_i = F * L_m - L_T
+  EL = -(L_i - L_j) * exp( - rT_B * (t_1 - tT_j)) + (L_i - L_j) * exp( - rT_B * (t_2 - tT_j));
+  
   aT_b = tau_b/ k_M/ TC_tL_f25; aT_j = tau_j/ k_M/ TC_tL_f25;   
   tT_j = aT_j - aT_b; % time since birth at metamorphosis
   t_bj = tL_f25(tL_f25(:,1) + t0_tLWwf < tT_j,1) + t0_tLWwf; % select times between birth & metamorphosis   
@@ -380,7 +390,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   EWw_f25 = EL_f25 .^3 * (1 + F * ome); % g, wet weight
 
   % 50 percent food
-  F = f_tL_f50; 
+  F = f_tLWw_f50; 
   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
   rT_B = TC_tL_f50 * rho_B * k_M;  % 1/d, von Bert growth rate   
   rT_j = TC_tL_f50 * rho_j * k_M;  % 1/d, exponential growth rate
@@ -397,7 +407,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   EWw_f50 = (ELw_f50 * del_M).^3 * (1 + F * ome); % g, wet weight
 
   % 75 percent food
-  F = f_tL_f75; 
+  F = f_tLWw_f75; 
   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
   rT_B = TC_tL_f75 * rho_B * k_M;  % 1/d, von Bert growth rate   
   rT_j = TC_tL_f75 * rho_j * k_M;  % 1/d, exponential growth rate
@@ -414,7 +424,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   EWw_f75 = (ELw_f75 * del_M).^3 * (1 + F * ome); % g, wet weight
 
   % 100 percent food
-  F = f_tL_f100; 
+  F = f_tLWw_f100; 
   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
   rT_B = TC_tL_f100 * rho_B * k_M;  % 1/d, von Bert growth rate   
   rT_j = TC_tL_f100 * rho_j * k_M;  % 1/d, exponential growth rate
@@ -471,9 +481,8 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
   prdData.tWw_T14 = EWw_T14;
   prdData.tWw_T18 = EWw_T18;
 
-%% subfunctions:
+function dLEHR = ode_LEHR(t, LEHR, p, c, f, s_M, TC)
 
-  function dLEHR = ode_LEHR(t, LEHR, p, c, f, s_M, TC)
 %
 % Input: 
 % p: structure 'par' 
@@ -490,9 +499,8 @@ EH  =  min(p.E_Hp,LEHR(3)); % J, E_H maturity
 ER  =  max(0,LEHR(4)); % J, E_R reproduction buffer
 ER1  =  max(0,LEHR(5)); % J, E_R reproduction buffer
 
-% Temperature correct the relevant parameters
+% Temperature correct the relevant paramters
 vT = p.v * TC; pT_M = p.p_M * TC; kT_J = p.k_J * TC; pT_Am = c.p_Am * TC;
-
 pA   = f * pT_Am * L^2 * s_M * (EH >= p.E_Hb);           % J/d, assimilation
 
 if EH < p.E_Hp % juveniles cannot cover somatic maintenance with the buffer   

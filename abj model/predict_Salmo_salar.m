@@ -340,8 +340,7 @@ function [prdData, info] = predict_Salmo_salar(par, data, auxData)
 
 
   % time-length and time-weight at different food levels
-  
-  % temperature profile from birth to start of experiment
+   % temperature profile from birth to start of experiment
   % T_tLWw_f = [repelem(9.6,129), 11.5 + (17-11.5) * [0:53]/53, repelem(16,90), 14 + (7.6 - 14) * [0:27]/27]
   % t0_tLWw_f = 300 % time since birth at start of experiment
   
