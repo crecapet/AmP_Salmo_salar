@@ -25,10 +25,10 @@ metaData.date_subm_mod_1 = [2019 03 13];
 metaData.email_mod_1    = {'sylvie.oddou(at)inra.fr'};            
 metaData.address_mod_1  = {'Research unit "Ecology of Mediterranean Forests", National Institute for Agronomic Research, France'};   
 
-metaData.author   = {'Helene Baillif'};    
-metaData.date_subm = [2019 03 13];              
-metaData.email    = {''};            
-metaData.address  = {'Joint research unit "Behavioral Ecology and Fish Population Biology", National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
+metaData.author_mod_2   = {'Helene Baillif'};    
+metaData.date_subm_mod_2 = [2019 03 13];              
+metaData.email_mod_2    = {''};            
+metaData.address_mod_2  = {'Joint research unit "Behavioral Ecology and Fish Population Biology", National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
 
 %% set data
 %% zero-variate data
@@ -1405,11 +1405,11 @@ txtData.bibkey = bibkey;
 txtData.comment = comment;
 
 %% Group plots
-set1 = {'tL_f0','tL_f25','tL_f50','tL_f75','tL_f100'}; comment1 = {''};
-set2 = {'tWw_f0','tWw_f25','tWw_f50','tWw_f75','tWw_f100'}; comment2 = {''};
-set3 = {'tWwVe_T8','tWwVe_T10','tWwVe_T12'}; comment3 = {''};
-set4 = {'tWwYe_T8','tWwYe_T10','tWwYe_T12'}; comment4 = {''};
-set5 = {'tWw_T4','tWw_T6','tWw_T8','tWw_T10','tWw_T14','tWw_T18'}; comment5 = {''};
+set1 = {'tL_f0','tL_f25','tL_f50','tL_f75','tL_f100'}; comment1 = {'Stefansson2009'};
+set2 = {'tWw_f0','tWw_f25','tWw_f50','tWw_f75','tWw_f100'}; comment2 = {'Stefansson2009'};
+set3 = {'tWwVe_T8','tWwVe_T10','tWwVe_T12'}; comment3 = {'Gunnes1979'};
+set4 = {'tWwYe_T8','tWwYe_T10','tWwYe_T12'}; comment4 = {'Gunnes1979'};
+set5 = {'tWw_T4','tWw_T6','tWw_T8','tWw_T10','tWw_T14','tWw_T18'}; comment5 = {'Handeland2008'};
 metaData.grp.sets = {set1, set2, set3, set4, set5};
 metaData.grp.comment = {comment1, comment2, comment3, comment4, comment5};
 
