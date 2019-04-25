@@ -27,7 +27,7 @@ metaData.address_mod_1  = {'Research unit "Ecology of Mediterranean Forests", Na
 
 metaData.author_mod_2   = {'Helene Baillif'};    
 metaData.date_subm_mod_2 = [2019 03 13];              
-metaData.email_mod_2    = {''};            
+metaData.email_mod_2    = {'helene.baillif(at)gmail.com'};            
 metaData.address_mod_2  = {'Joint research unit "Behavioral Ecology and Fish Population Biology", National Institute for Agronomic Research - University Pau Pays de l''ADour, France'};   
 
 %% set data
@@ -162,7 +162,7 @@ data.Li  = 95;   units.Li  = 'cm';  label.Li  = 'ultimate total length';   bibke
 % data.Li_F  = 96;   units.Li_F  = 'cm';  label.Li_F  = 'ultimate total length';   bibkey.Li_F  = 'Solberg2014'; comment.Li_F = 'maximum of Norwegian populations maxima - females';
 
 %% Egg volume
-  data.V0 = 0.090;  units.V0 = 'cm^3'; label.V0 = 'egg volume'; bibkey.V0 = 'Berg2001';  comment.V0 = 'parents from river StjÃ¸rdalselva (Norway)';
+  data.V0 = 0.090;  units.V0 = 'cm^3'; label.V0 = 'egg volume'; bibkey.V0 = 'Berg2001';  comment.V0 = 'parents from river StjÃƒÂ¸rdalselva (Norway)';
 
 %% Egg weight
 
@@ -172,18 +172,18 @@ data.Li  = 95;   units.Li  = 'cm';  label.Li  = 'ultimate total length';   bibke
 % data.Ww0 = 0.16145;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Kazakov1981';  comment.Ww0 = 'mean of River Neva (Russia)';
 % data.Ww0 = 0.113;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Srivastava1991';  comment.Ww0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
 % data.Ww0 = 0.131;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Srivastava1991';  comment.Ww0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-% data.Ww0 = 0.104;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Berg2001';  comment.Ww0 = 'before fertilization - parents from river StjÃ¸rdalselva (Norway)';
+% data.Ww0 = 0.104;  units.Ww0 = 'g'; label.Ww0 = 'wet egg weight'; bibkey.Ww0 = 'Berg2001';  comment.Ww0 = 'before fertilization - parents from river StjÃƒÂ¸rdalselva (Norway)';
 
 % data.Wd0 = 0.042;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
 % data.Wd0 = 0.039;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Srivastava1991';  comment.Wd0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-  data.Wd0 = 0.035;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Berg2001';  comment.Wd0 = 'before fertilization - parents from river StjÃ¸rdalselva (Norway)';
+  data.Wd0 = 0.035;  units.Wd0 = 'g'; label.Wd0 = 'dry egg weight'; bibkey.Wd0 = 'Berg2001';  comment.Wd0 = 'before fertilization - parents from river StjÃƒÂ¸rdalselva (Norway)';
 
 %% Weight at hatching
 
- data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4°C - parents from River Kent (Cumbria, northern England)';
+ data.Wwh = 0.0552*100/(100-62.9);   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Carrick1979';  comment.Wwh = 'at 4Â°C - parents from River Kent (Cumbria, northern England)';
 % data.Wwh = 0.117;   units.Wwh = 'g';   label.Wwh = 'wet weight at hatching';     bibkey.Wwh = 'Srivastava1991';  comment.Wwh = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 
-% data.Wdh = 0.0552;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Carrick1979';  comment.Wdh = 'at 4°C - parents from River Kent (Cumbria, northern England)';
+% data.Wdh = 0.0552;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Carrick1979';  comment.Wdh = 'at 4Â°C - parents from River Kent (Cumbria, northern England)';
 % data.Wdh = 0.034;   units.Wdh = 'g';   label.Wdh = 'dry weight at hatching';     bibkey.Wdh = 'Srivastava1991';  comment.Wdh = 'parents from Northeast Placentia River (Newfoundland, Canada)';
 
 %% Weight at first feeding
@@ -214,7 +214,7 @@ data.Wwb = 0.16;   units.Wwb = 'g';   label.Wwb = 'wet weight at birth';     bib
 
 % data.E0 = 1113; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Srivastava1991';   comment.E0 = 'before fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
 % data.E0 = 1028; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Srivastava1991';   comment.E0 = 'after fertilization - parents from Northeast Placentia River (Newfoundland, Canada)';
-  data.E0 = 757; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Berg2001';   comment.E0 = 'before fertilization - parents from river StjÃ¸rdalselva (Norway)';
+  data.E0 = 757; units.E0 = 'J'; label.E0 = 'egg reserve energy'; bibkey.E0 = 'Berg2001';   comment.E0 = 'before fertilization - parents from river StjÃƒÂ¸rdalselva (Norway)';
 
 %% Total energy
 
@@ -232,7 +232,7 @@ data.Ri  = 14499/365.25;   units.Ri  = '#/d'; label.Ri  = 'maximum reprod rate';
 
 %% T-ah data
 
-data.Tah = [ ... % temperature (°C), age at hatching (d)
+data.Tah = [ ... % temperature (Â°C), age at hatching (d)
 2  155
 4  126
 6  84
@@ -243,7 +243,7 @@ data.Tah(:,1)=C2K(data.Tah(:,1));
 units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
 bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brunswick - Canada)';
 
-% data.Tah = [ ... % temperature (°C), age at hatching (d)
+% data.Tah = [ ... % temperature (Â°C), age at hatching (d)
 % 8  63
 % 10 49.2
 % 12 37.75];
@@ -251,7 +251,7 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 %units.Tah   = {'K', 'd'};  label.Tah = {'temperature', 'age at hatching'}; 
 %bibkey.Tah = 'Gunnes1979'; comment.Tah = 'Norwegian strain (wild or domestic?)';
 
-%data.Tah = [ ... % temperature (°C), age at hatching (d)
+%data.Tah = [ ... % temperature (Â°C), age at hatching (d)
 %4.8  116.5
 %6  92.5
 %6.3  88];
@@ -261,7 +261,7 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 
 %% T-ab data
 
-% data.Tab_Peterson1977 = [ ... % temperature (°C), age at yolk exhaustion (d)
+% data.Tab_Peterson1977 = [ ... % temperature (Â°C), age at yolk exhaustion (d)
 % 2 238
 % 6 177
 % 12  64];
@@ -269,7 +269,7 @@ bibkey.Tah = 'Peterson1977'; comment.Tah = 'parents from Dennis Stream (New Brun
 % units.Tab_Peterson1977   = {'K', 'd'};  label.Tab_Peterson1977 = {'temperature', 'age at birth'}; 
 % bibkey.Tab_Peterson1977 = 'Peterson1977'; comment.Tab_Peterson1977 = 'parents from Dennis Stream (New Brunswick - Canada)';
 
-data.Tab = [ ... % temperature (°C), age at emergence (d)
+data.Tab = [ ... % temperature (Â°C), age at emergence (d)
 0.0 390.6
 0.4 357.8
 1.0 315.6
@@ -301,7 +301,7 @@ bibkey.Tab = 'Gorodilov1996'; comment.Tab = 'eggs from hatcheries on various riv
 %540  23.8
 %568  27.6];
 %units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};  
-%temp.tL    = C2K(10);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature between 8 and 12°C';
+%temp.tL    = C2K(10);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature between 8 and 12Â°C';
 %bibkey.tL = 'Rottiers1993'; comment.tL = 'Penobscot River strain (USA)';
 
 data.tL = [ ... % time since emergence (d), fork length (cm)
@@ -338,7 +338,7 @@ data.tL = [ ... % time since emergence (d), fork length (cm)
 49  4.3
 49  4.6];
 units.tL   = {'d', 'cm'};  label.tL = {'time since birth', 'total length'};  
-temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4°C to 14.1°C throughout the experiment';
+temp.tL    = C2K(12);  units.temp.tL = 'K'; label.temp.tL = 'temperature'; comment.temp.tL = 'temperature increasing from 10.4Â°C to 14.1Â°C throughout the experiment';
 bibkey.tL = 'Einum2000'; comment.tL = 'Imsa River (Norway)';
 
 data.tL_f0 = [ ... % time (d), fork length (cm) without food
@@ -378,7 +378,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 
 %% t-W data in embryos
 
-%data.tWwe_T12 = [ ... % time since fertilization (d), wet weight (g) at 12°C
+%data.tWwe_T12 = [ ... % time since fertilization (d), wet weight (g) at 12Â°C
 %38 0.1045
 %42 0.1284
 %46 0.1585
@@ -390,7 +390,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T12    = C2K(12);  units.temp.tWwe_T12 = 'K'; label.temp.tWwe_T12 = 'temperature';
 %bibkey.tWwe_T12 = 'Gunnes1979'; comment.tWwe_T12 = 'Norwegian strain (wild or domestic?)';
 
-%data.tWwe_T10 = [ ... % time since fertilization (d), wet weight (g) at 10°C
+%data.tWwe_T10 = [ ... % time since fertilization (d), wet weight (g) at 10Â°C
 %38 0.1036
 %42 0.1201
 %46 0.1236
@@ -402,7 +402,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T10    = C2K(10);  units.temp.tWwe_T10 = 'K'; label.temp.tWwe_T10 = 'temperature';
 %bibkey.tWwe_T10 = 'Gunnes1979'; comment.tWwe_T10 = 'Norwegian strain (wild or domestic?)';
 
-%data.tWwe_T8 = [ ... % time since fertilization (d), wet weight (g) at 8°C
+%data.tWwe_T8 = [ ... % time since fertilization (d), wet weight (g) at 8Â°C
 %38 0.0988
 %42 0.1136
 %46 0.1172
@@ -414,7 +414,7 @@ bibkey.tL_f100 = 'Stefansson2009'; comment.tL_f100 = 'post-smolts in seawater - 
 %temp.tWwe_T8    = C2K(8);  units.temp.tWwe_T8 = 'K'; label.temp.tWwe_T8 = 'temperature';
 %bibkey.tWwe_T8 = 'Gunnes1979'; comment.tWwe_T8 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T12 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 12°C
+data.tWwVe_T12 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 12Â°C
 38 0.0128
 42 0.0301
 46 0.0405
@@ -426,7 +426,7 @@ units.tWwVe_T12   = {'d', 'g'};  label.tWwVe_T12 = {'time since fertilization', 
 temp.tWwVe_T12    = C2K(12);  units.temp.tWwVe_T12 = 'K'; label.temp.tWwVe_T12 = 'temperature';
 bibkey.tWwVe_T12 = 'Gunnes1979'; comment.tWwVe_T12 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T10 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 10°C
+data.tWwVe_T10 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 10Â°C
 38 0.0138
 42 0.0311
 46 0.0366
@@ -438,7 +438,7 @@ units.tWwVe_T10   = {'d', 'g'};  label.tWwVe_T10 = {'time since fertilization', 
 temp.tWwVe_T10    = C2K(10);  units.temp.tWwVe_T10 = 'K'; label.temp.tWwVe_T10 = 'temperature';
 bibkey.tWwVe_T10 = 'Gunnes1979'; comment.tWwVe_T10 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwVe_T8 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 8°C
+data.tWwVe_T8 = [ ... % time since fertilization (d), wet weight excluding yolk (g) at 8Â°C
 38 0.0128
 42 0.0270
 46 0.0331
@@ -450,7 +450,7 @@ units.tWwVe_T8   = {'d', 'g'};  label.tWwVe_T8 = {'time since fertilization', 'w
 temp.tWwVe_T8    = C2K(8);  units.temp.tWwVe_T8 = 'K'; label.temp.tWwVe_T8 = 'temperature';
 bibkey.tWwVe_T8 = 'Gunnes1979'; comment.tWwVe_T8 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T12 = [ ... % time since fertilization (d), yolk wet weight (g) at 12°C
+data.tWwYe_T12 = [ ... % time since fertilization (d), yolk wet weight (g) at 12Â°C
 38 0.0809
 42 0.0735
 46 0.0784
@@ -462,7 +462,7 @@ units.tWwYe_T12   = {'d', 'g'};  label.tWwYe_T12 = {'time since fertilization', 
 temp.tWwYe_T12    = C2K(12);  units.temp.tWwYe_T12 = 'K'; label.temp.tWwYe_T12 = 'temperature';
 bibkey.tWwYe_T12 = 'Gunnes1979'; comment.tWwYe_T12 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T10 = [ ... % time since fertilization (d), yolk wet weight (g) at 10°C
+data.tWwYe_T10 = [ ... % time since fertilization (d), yolk wet weight (g) at 10Â°C
 38 0.0786
 42 0.0767
 46 0.0660
@@ -474,7 +474,7 @@ units.tWwYe_T10   = {'d', 'g'};  label.tWwYe_T10 = {'time since fertilization', 
 temp.tWwYe_T10    = C2K(10);  units.temp.tWwYe_T10 = 'K'; label.temp.tWwYe_T10 = 'temperature';
 bibkey.tWwYe_T10 = 'Gunnes1979'; comment.tWwYe_T10 = 'Norwegian strain (wild or domestic?)';
 
-data.tWwYe_T8 = [ ... % time since fertilization (d), yolk wet weight (g) at 8°C
+data.tWwYe_T8 = [ ... % time since fertilization (d), yolk wet weight (g) at 8Â°C
 38 0.0786
 42 0.0765
 46 0.0723
@@ -500,7 +500,7 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %540 110.6
 %568 188.3];
 %units.tWw   = {'d', 'g'};  label.tWw = {'time since birth', 'wet weight'};  
-%temp.tWw    = C2K(10);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature between 8 and 12°C';
+%temp.tWw    = C2K(10);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature between 8 and 12Â°C';
 %bibkey.tWw = 'Rottiers1993'; comment.tWw = 'Penobscot River strain (USA)';
 
 %data.tWd = [ ... % time since first feeding (d), dry weight (g)
@@ -514,7 +514,7 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %540 110.6*(1-0.716)
 %568 188.3*(1-0.707)];
 %units.tWd   = {'d', 'g'};  label.tWd = {'time since birth', 'dry weight'};  
-%temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature'; comment.temp.tWd = 'temperature between 8 and 12°C';
+%temp.tWd    = C2K(10);  units.temp.tWd = 'K'; label.temp.tWd = 'temperature'; comment.temp.tWd = 'temperature between 8 and 12Â°C';
 %bibkey.tWd = 'Rottiers1993'; comment.tWd = 'Penobscot River strain (USA)';
 
 %data.tWw = [ ... % time since yolk absorption (d), wet weight (g)
@@ -522,12 +522,12 @@ bibkey.tWwYe_T8 = 'Gunnes1979'; comment.tWwYe_T8 = 'Norwegian strain (wild or do
 %448  81.6
 %463  100.7]';
 %units.tWw   = {'d', 'g'};  label.tWw = {'time since birth', 'wet weight'};  
-%temp.tWw    = C2K(12);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature increasing from 10.4°C to 14.1°C throughout the experiment';
+%temp.tWw    = C2K(12);  units.temp.tWw = 'K'; label.temp.tWw = 'temperature'; comment.temp.tWw = 'temperature increasing from 10.4Â°C to 14.1Â°C throughout the experiment';
 %bibkey.tWw = 'Einum2000'; comment.tWw = 'Imsa River (Norway)';
 
 %% t-W data in seawater
 
-data.tWw_T4 = [ ...  % time since transfer in seawater (d), wet weight (g) at 4°C
+data.tWw_T4 = [ ...  % time since transfer in seawater (d), wet weight (g) at 4Â°C
 22 61.8
 63 74.5
 90 78.1];
@@ -535,7 +535,7 @@ units.tWw_T4   = {'d', 'g'};  label.tWw_T4 = {'time since metamorphosis', 'wet w
 temp.tWw_T4    = C2K(4);  units.temp.tWw_T4 = 'K'; label.temp.tWw_T4 = 'temperature';
 bibkey.tWw_T4 = 'Handeland1998'; comment.tWw_T4 = 'domestic strain';
 
-data.tWw_T8 = [ ...  % time since transfer in seawater (d), wet weight (g) at 8°C
+data.tWw_T8 = [ ...  % time since transfer in seawater (d), wet weight (g) at 8Â°C
 22 63.6
 63 105.9
 90 132.6];
@@ -543,7 +543,7 @@ units.tWw_T8   = {'d', 'g'};  label.tWw_T8 = {'time since metamorphosis', 'wet w
 temp.tWw_T8   = C2K(8);  units.temp.tWw_T8 = 'K'; label.temp.tWw_T8 = 'temperature';
 bibkey.tWw_T8 = 'Handeland1998'; comment.tWw_T8 = 'domestic strain';
 
-data.tWw_T6 = [ ... % time since tranfer to seawater (d), wet weight (g) at 6°C
+data.tWw_T6 = [ ... % time since tranfer to seawater (d), wet weight (g) at 6Â°C
 0  75.8
 14 77.4
 28 88.7
@@ -555,7 +555,7 @@ units.tWw_T6   = {'d', 'g'};  label.tWw_T6 = {'time since metamorphosis', 'wet w
 temp.tWw_T6   = C2K(6);  units.temp.tWw_T6 = 'K'; label.temp.tWw_T6 = 'temperature';
 bibkey.tWw_T6 = 'Handeland2008'; comment.tWw_T6 = 'AquaGen domestic strain';
 
-data.tWw_T10 = [ ... % time since tranfer to seawater (d), wet weight (g) at 10°C
+data.tWw_T10 = [ ... % time since tranfer to seawater (d), wet weight (g) at 10Â°C
 0  75.8
 14 83.8
 28 108.0
@@ -567,7 +567,7 @@ units.tWw_T10   = {'d', 'g'};  label.tWw_T10 = {'time since metamorphosis', 'wet
 temp.tWw_T10   = C2K(10);  units.temp.tWw_T10 = 'K'; label.temp.tWw_T10 = 'temperature';
 bibkey.tWw_T10 = 'Handeland2008'; comment.tWw_T10 = 'AquaGen domestic strain';
   
-data.tWw_T14 = [ ... % time since tranfer to seawater (d), wet weight (g) at 14°C
+data.tWw_T14 = [ ... % time since tranfer to seawater (d), wet weight (g) at 14Â°C
 0  75.8
 14 83.8
 28 116.1
@@ -579,7 +579,7 @@ units.tWw_T14   = {'d', 'g'};  label.tWw_T14 = {'time since metamorphosis', 'wet
 temp.tWw_T14   = C2K(14);  units.temp.tWw_T14 = 'K'; label.temp.tWw_T14 = 'temperature';
 bibkey.tWw_T14 = 'Handeland2008'; comment.tWw_T14 = 'AquaGen domestic strain';
 
-data.tWw_T18 = [ ... % time since tranfer to seawater (d), wet weight (g) at 18°C
+data.tWw_T18 = [ ... % time since tranfer to seawater (d), wet weight (g) at 18Â°C
 0	75.8
 14	88.7
 28	116.1
@@ -888,7 +888,7 @@ bibkey.LWw_parrs = 'Sutton2000'; comment.LWw_parrs = 'Northeast Brook, Newfoundl
 %23.8 110.6
 %27.6 188.3];
 %units.LWw   = {'cm', 'g'};  label.LWw = {'total length', 'wet weight'};  
-%bibkey.LWw = 'Rottiers1993'; comment.LWw = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
+%bibkey.LWw = 'Rottiers1993'; comment.LWw = 'Penobscot River strain (USA) - temperature between 8 and 12Â°C';
 
 data.LWw_spawners = [ ... % fork length (cm), wet weight (g)
 60 1500
@@ -898,7 +898,7 @@ data.LWw_spawners = [ ... % fork length (cm), wet weight (g)
 85 6000
 92 8000];
 units.LWw_spawners   = {'cm', 'g'};  label.LWw_spawners = {'total length', 'wet weight'};  
-bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river StjÃ¸rdalselva (Norway)';
+bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river StjÃƒÂ¸rdalselva (Norway)';
 
 %data.LWw_Norway = [ ... % fork length (cm), wet weight (g)
 %2.9  0.17
@@ -1158,7 +1158,7 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 %23.8 110.6*(1-0.716)
 %27.6 188.3*(1-0.707)];
 %units.LWd   = {'cm', 'g'};  label.LWd = {'total length', 'dry weight'};  
-%bibkey.LWd = 'Rottiers1993'; comment.LWd = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
+%bibkey.LWd = 'Rottiers1993'; comment.LWd = 'Penobscot River strain (USA) - temperature between 8 and 12Â°C';
 
 %% Wd-Ww data
 % These data are not to be used unless we suspect d_V = Wd/Ww might subtantially
@@ -1195,7 +1195,7 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 % 110.6*(1-0.716)  110.6
 % 188.3*(1-0.707)  188.3];
 % units.WdWw   = {'g', 'g'};  label.WdWw = {'dry weight', 'wet weight'};  
-% bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
+% bibkey.WdWw = 'Rottiers1993'; comment.WdWw = 'Penobscot River strain (USA) - temperature between 8 and 12Â°C';
 %   
 % data.WdWw = [ ... % dry weight (g), wet weight (g)
 % 81.9*0.303 81.9
@@ -1361,7 +1361,7 @@ bibkey.LWw_spawners = 'Berg2001'; comment.LWw_spawners = 'females from river Stj
 %units.tLipid   = {'d', 'g'};  label.tLipid = {'time since birth', 'lipid'};  
 %temp.tLipid    = C2K(10);  units.temp.tLipid = 'K'; label.temp.tLipid = 'temperature';
 %bibkey.tLipid = 'Rottiers1993';
-%comment.tLipid = 'Penobscot River strain (USA) - temperature between 8 and 12°C';
+%comment.tLipid = 'Penobscot River strain (USA) - temperature between 8 and 12Â°C';
 
 %% set weights for all real data
 weights = setweights(data, []);
@@ -1556,7 +1556,7 @@ bibkey = 'Peterson1977'; type = 'Article'; bib = [ ...
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 %
 bibkey = 'Handeland1998'; type = 'Article'; bib = [ ... 
-'author = {Handeland, S. O. and Berge, A. and BjÃ¶rnsson, B. T. and Stefansson, S. O.}, ' ... 
+'author = {Handeland, S. O. and Berge, A. and BjÃƒÂ¶rnsson, B. T. and Stefansson, S. O.}, ' ... 
 'year = {1998}, ' ...
 'title = {Effects of temperature and salinity on osmoregulation and growth of Atlantic salmon (Salmo salar L.) smolts in seawater}, ' ...
 'journal = {Aquaculture}, ' ...
@@ -1602,7 +1602,7 @@ metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 bibkey = 'Wallace1988'; type = 'Article'; bib = [ ... 
 'author = {Wallace, J. C. and Heggberget, T. G.}, ' ... 
 'year = {1988}, ' ...
-'title = {Incubation of eggs of Atlantic salmon (Salmo salar)  from different Norwegian streams at  temperatures below 1°C.}, ' ...
+'title = {Incubation of eggs of Atlantic salmon (Salmo salar)  from different Norwegian streams at  temperatures below 1Â°C.}, ' ...
 'journal = {Journal of Fisheries and Aquatic Science}, ' ...
 'volume = {45}, ' ...
 'number = {1}, ' ...
