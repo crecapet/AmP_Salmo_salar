@@ -1284,12 +1284,12 @@ weights = setweights(data, []);
 weights.V0 = weights.V0/3;
 weights.Tah = 3*weights.Tah;
 weights.Tab = 3*weights.Tab;
-weights.tWwVe_T8 = weights.tWwVe_T8/9;
-weights.tWwYe_T8 = weights.tWwYe_T8/9;
-weights.tWwVe_T10 = weights.tWwVe_T10/9;
-weights.tWwYe_T10 = weights.tWwYe_T10/9;
-weights.tWwVe_T12 = weights.tWwVe_T12/9;
-weights.tWwYe_T12 = weights.tWwYe_T12/9;
+weights.tWwVe_T8 = 0*weights.tWwVe_T8/9;
+weights.tWwYe_T8 = 0*weights.tWwYe_T8/9;
+weights.tWwVe_T10 = 0*weights.tWwVe_T10/9;
+weights.tWwYe_T10 = 0*weights.tWwYe_T10/9;
+weights.tWwVe_T12 = 0*weights.tWwVe_T12/9;
+weights.tWwYe_T12 = 0*weights.tWwYe_T12/9;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);

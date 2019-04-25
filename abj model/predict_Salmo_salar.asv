@@ -1,0 +1,524 @@
+function [prdData, info] = predict_Salmo_salar(par, data, auxData)
+  
+  % unpack par, data, auxData
+  cPar = parscomp_st(par); vars_pull(par); 
+  vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
+  
+     filterChecks = E_Hh < 0 || E_Hh > E_Hb || E_Hb > E_Hj;
+  
+  if filterChecks  
+    info = 0;
+    prdData = {};
+    return;
+  end  
+
+%   % customized filters for allowable parameters of the standard DEB model (std)
+%   % for other models consult the appropriate filter function.
+%   pars_tj = [g; k; l_T; v_Hb; v_Hj; v_Hp];
+%   [t_j, t_p, t_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_tL);
+%   if info ~= 1 % numerical procedure failed
+%       fprintf('warning: invalid parameter value combination for get_tj \n')
+%   end
+%   s_M = l_j / l_b;
+%   filterChecks = k * v_Hp >= f_tL ^3 * s_M^3  || ...         % constraint required for reaching puberty with f_tL
+%   
+%   if filterChecks  
+%     info = 0;
+%     prdData = {};
+%     return;
+%   end  
+
+  % compute temperature correction factors
+  TC_Tah = tempcorr(Tah(:,1), T_ref, T_A);
+  TC_Tab = tempcorr(Tab(:,1), T_ref, T_A);
+% TC_aj = tempcorr(temp.aj, T_ref, T_A);
+% TC_as = tempcorr(temp.as, T_ref, T_A);
+  TC_ap_Scotland = tempcorr(temp.ap_Scotland, T_ref, T_A);
+  TC_ap_Nivelle = tempcorr(temp.ap_Nivelle, T_ref, T_A);
+  TC_ap_Iceland = tempcorr(temp.ap_Iceland, T_ref, T_A);
+  TC_am = tempcorr(temp.am, T_ref, T_A);
+  TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
+  TC_tL = tempcorr(temp.tL, T_ref, T_A);
+  TC_tWw_T4 = tempcorr(temp.tWw_T4, T_ref, T_A); %SOM - 3-04-2019
+  TC_tWw_T6 = tempcorr(temp.tWw_T6, T_ref, T_A); %SOM - 3-04-2019
+  TC_tWw_T8 = tempcorr(temp.tWw_T8, T_ref, T_A); %SOM - 3-04-2019
+  TC_tWw_T10 = tempcorr(temp.tWw_T10, T_ref, T_A); %SOM - 3-04-2019
+  TC_tWw_T14 = tempcorr(temp.tWw_T14, T_ref, T_A); %SOM - 3-04-2019
+  TC_tWw_T18 = tempcorr(temp.tWw_T18, T_ref, T_A); %SOM - 3-04-2019
+
+  
+  % zero-variate data
+
+  % life cycle
+  pars_tj = [g; k; l_T; v_Hb; v_Hj; v_Hp];
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f);
+  if info ~= 1 % numerical procedure failed
+     fprintf('warning: invalid parameter value combination for get_tj \n')
+  end
+  
+  % initial
+  pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
+  U_E0 = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
+  E_0 = p_Am * U_E0;            % J, initial energy content
+  Wd_0 = E_0 * w_E/ mu_E;      % g, initial dry weight 
+  V_0 = Wd_0/ d_E;             % cm^3, egg volume 
+  
+  % hatch   
+  [U_H aUL] = ode45(@dget_aul, [0; U_Hh; U_Hb], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
+% a_h = aUL(2,1); aT_h = a_h/ TC_ah; % d, age at hatch at f and T
+  L_h = aUL(2,3); % cm, structural length at hatch at f
+  Lw_h = L_h / del_M;  % cm, structural length at hatch at f
+  Ww_h = L_h^3 * (1 + f * ome);       % g, wet weight at hatch at f 
+
+  % birth
+  L_b = L_m * l_b;                  % cm, structural length at birth at f
+  Lw_b = L_b/ del_M;                % cm, physical length at birth at f
+  Ww_b = L_b^3 * (1 + f * ome);       % g, wet weight at birth at f 
+% aT_b = tau_b/ k_M/ TC_ab;           % d, age at birth at f and T
+
+  % metamorphosis
+%   L_j = L_m * l_j;                  % cm, structural length at metam
+%   Lw_j = L_j/ del_M;                % cm, physical length at metam at f
+%   Ww_j = L_j^3 * (1 + f * ome);       % g, wet weight at metam
+%   aT_j = tau_j/ k_M/ TC_aj;  % d, age at metam
+
+  % smoltification 
+% still to be computed properly
+%   Lw_s = L_slim;  % cm, physical length at smoltification at f
+%   Ww_s = L_s^3 * (1 + f * ome);       % g, wet weight at smoltification at f 
+%   F = f; 
+%   [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
+%   rT_B = TC_as * rho_B * k_M;  % 1/d, von Bert growth rate   
+%   rT_j = TC_as * rho_j * k_M;  % 1/d, exponential growth rate
+%   aT_b = tau_b/ k_M/ TC_as; aT_j = tau_j/ k_M/ TC_as;   
+%   t_j = aT_j - aT_b; % time since birth at metamorphosis
+%   L_j = L_m * l_j;
+%   Lw_b = l_b * L_m/ del_M; 
+%   Lw_j = l_j * L_m/ del_M; 
+%   Lw_i = l_i * L_m/ del_M;
+%   if L_s < L_j % select times between birth & metamorphosis   
+%     t_s = log(Lw_s/Lw_b)*3/rT_j; % exponential growth as V1-morph
+%     aT_s = aT_b + t_s;
+%   else % selects times after metamorphosis
+%     t_s = t_j - log((Lw_i - Lw_s)/(Lw_i - Lw_j))/rT_B ; % d, time since birth at smoltification
+%     aT_s = aT_b + t_s;
+%   end
+
+  % puberty 
+  L_p = L_m * l_p;                  % cm, structural length at puberty at f
+  Lw_p = L_p/ del_M;                % cm, physical length at puberty at f
+  Ww_p = L_p^3 *(1 + f * ome);        % g, wet weight at puberty 
+  aT_p_Scotland = tau_p/ k_M/ TC_ap_Scotland;   % d, age at puberty at f and T
+  aT_p_Nivelle = tau_p/ k_M/ TC_ap_Nivelle;   % d, age at puberty at f and T
+  aT_p_Iceland = tau_p/ k_M/ TC_ap_Iceland;   % d, age at puberty at f and T
+
+  % ultimate
+  L_i = L_m * l_i;                  % cm, ultimate structural length at f
+  Lw_i = L_i/ del_M;                % cm, ultimate physical length at f
+  Ww_i = L_i^3 * (1 + f * ome);       % g, ultimate wet weight 
+ 
+  % reproduction
+  pars_R = [kap, kap_R, g, k_J, k_M, L_T, v, U_Hb, U_Hj, U_Hp];
+  [R_i, UE0, Lb, Lj, Lp, info]  =  reprod_rate_j(L_i, f, pars_R, L_b);
+  RT_i = TC_Ri * R_i;% #/d, max reprod rate
+
+  % life span
+  pars_tm = [g; l_T; h_a/ k_M^2; s_G];  % compose parameter vector at T_ref
+  t_m = get_tm_s(pars_tm, f, l_b);      % -, scaled mean life span at T_ref
+  aT_m = t_m/ k_M/ TC_am;               % d, mean life span at T
+  
+  % pack to output
+% prdData.ah = aT_h;
+% prdData.ab = aT_b;
+% prdData.tj = tT_j;
+% prdData.aj = aT_j;
+% prdData.as = aT_s;
+% prdData.tp = tT_p;
+  prdData.ap_Scotland = aT_p_Scotland;
+  prdData.ap_Nivelle = aT_p_Nivelle;
+  prdData.ap_Iceland = aT_p_Iceland;
+  prdData.am = aT_m;
+  prdData.Lh = Lw_h;
+  prdData.Lb = Lw_b;
+% prdData.Lj = Lw_j;
+% prdData.Ls = Lw_s;
+% prdData.Lp = Lw_p;
+  prdData.Li = Lw_i;
+  prdData.V0 = V_0;
+  prdData.Wd0 = Wd_0;
+  prdData.Wwh = Ww_h;
+  prdData.Wwb = Ww_b;
+% prdData.Wwj = Ww_j;
+% prdData.Wws = Ww_s;
+% prdData.Wwp = Ww_p;
+  prdData.Wwi_F = Ww_i;
+  prdData.E0 = E_0;
+  prdData.Ri = RT_i;
+  
+  % uni-variate data
+  
+  % t-Wwe and t-WwVe
+  % temperature 8°C
+  % compute temperature correction factors
+  TC8 = tempcorr(temp.tWwVe_T8, T_ref, T_A);
+  vT8 = v * TC8; kT8_J = TC8 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT8_E_Am = TC8 * J_E_Am;
+  UT8_E0 = TC8 * U_E0;
+  
+  % tW-data embryo witout yolk
+  t = [0; tWwVe_T8(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT8_E0 0], [], kap, vT8, kT8_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e8 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data yolk
+  t = [0; tWwYe_T8(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT8_E0 0], [], kap, vT8, kT8_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT8_E_Am;
+  EV_e8 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
+  
+  % temperature 10°C
+  % compute temperature correction factors
+  TC10 = tempcorr(temp.tWwVe_T10, T_ref, T_A);
+  vT10 = v * TC10; kT10_J = TC10 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT10_E_Am = TC10 * J_E_Am;
+  UT10_E0 = TC10 * U_E0;
+  
+  % tW-data embryo without yolk
+  t = [0; tWwVe_T10(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT10_E0 0], [], kap, vT10, kT10_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e10 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data
+  t = [0; tWwYe_T10(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT10_E0 0], [], kap, vT10, kT10_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT10_E_Am;
+  EV_e10 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus
+  
+  % temperature 12°C
+  % compute temperature correction factors
+  TC12 = tempcorr(temp.tWwVe_T12, T_ref, T_A);
+  vT12 = v * TC12; kT12_J = TC12 * k_J;% kT_M = TC * k_M; pT_M = p_M * TC;
+  JT12_E_Am = TC12 * J_E_Am;
+  UT12_E0 = TC12 * U_E0;
+  
+  % tW-data embryo witout yolk
+  t = [0; tWwVe_T12(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT12_E0 0], [], kap, vT12, kT12_J, g, L_m); 
+  LUH(1,:) = []; L = LUH(:,1); % cm, structural length
+  EWw_e12 = L .^ 3 * (1 + f_tWeVe_tWeYe * w); % g, wet weight embryo minus vitellus
+  % tWV-data
+  t = [0; tWwYe_T12(:,1)]; 
+  [t LUH] = ode45(@dget_LUH, t, [1e-10 UT12_E0 0], [], kap, vT12, kT12_J, g, L_m); 
+  LUH(1,:) = []; 
+  L = LUH(:,1); L3 = L .^3; M_E = LUH(:,2) * JT12_E_Am;
+  EV_e12 = max(0, M_E * w_E/ d_E - L3 * f_tWeVe_tWeYe * w); % g, wet weight vitellus  
+  
+  % time-length 
+  F = f_tL; 
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, F);
+  rT_B = TC_tL * rho_B * k_M;  % 1/d, von Bert growth rate   
+  rT_j = TC_tL * rho_j * k_M;  % 1/d, exponential growth rate
+  aT_b = tau_b/ k_M/ TC_tL; aT_j = tau_j/ k_M/ TC_tL;   
+  t_j = aT_j - aT_b; % time since birth at metamorphosis
+  t_bj = tL(tL(:,1)+t0_tL < t_j,1)+t0_tL; % select times between birth & metamorphosis   
+  Lw_b = l_b * L_m/ del_M; 
+  Lw_j = l_j * L_m/ del_M; 
+  Lw_i = l_i * L_m/ del_M;
+  EL_bj = Lw_b * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+  t_ji = tL(tL(:,1)+t0_tL >= t_j,1)+t0_tL; % selects times after metamorphosis
+  EL_ji = Lw_i - (Lw_i - Lw_j) * exp( - rT_B * (t_ji - t_j)); % cm, expected length at time
+  ELw = [EL_bj; EL_ji]; % catenate lengths
+  
+  % t-Ww data in seawater 
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_tW);
+    
+  % from Salvelinus_alpinus
+  % to integrate t-W data before and after metamorphosis
+  % T18
+  rT_B = TC_tWw_T18 * rho_B * k_M; rT_j = TC_tWw_T18 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T18(tWw_T18(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T18(tWw_T18(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T18(:,1)); % cm, expected length at time
+  end
+  EWw_T18 = L.^3 * (1 + f_tW * w);
+  
+   % T4
+  rT_B = TC_tWw_T4 * rho_B * k_M; rT_j = TC_tWw_T4 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T4(tWw_T4(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T4(tWw_T4(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T4(:,1)); % cm, expected length at time
+  end
+  EWw_T4 = L.^3 * (1 + f_tW * w);
+
+   % T6
+  rT_B = TC_tWw_T6 * rho_B * k_M; rT_j = TC_tWw_T6 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T6(tWw_T6(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T6(tWw_T6(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T6(:,1)); % cm, expected length at time
+  end
+  EWw_T6 = L.^3 * (1 + f_tW * w);
+
+  
+   % T8
+  rT_B = TC_tWw_T8 * rho_B * k_M; rT_j = TC_tWw_T8 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T8(tWw_T8(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T8(tWw_T8(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T8(:,1)); % cm, expected length at time
+  end
+  EWw_T8 = L.^3 * (1 + f_tW * w);
+
+   % T10
+  rT_B = TC_tWw_T10 * rho_B * k_M; rT_j = TC_tWw_T10 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T10(tWw_T10(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T10(tWw_T10(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T10(:,1)); % cm, expected length at time
+  end
+  EWw_T10 = L.^3 * (1 + f_tW * w);
+
+   % T14
+  rT_B = TC_tWw_T14 * rho_B * k_M; rT_j = TC_tWw_T14 * rho_j * k_M; % 1/d, von Bert, exponential growth rate
+  L_b = l_b * L_m; L_j = l_j * L_m; L_i = l_i * L_m;
+  L_0 = (W_0./ (1 + f_tW * ome))^(1/3); % cm, structural length at t initial 
+  if L_0 < L_j
+    tj = log(L_j/ L_0) * 3/ rT_j;
+    t_bj = tWw_T14(tWw_T14(:,1) < tj,1); % select times between birth & metamorphosis
+    L_bj = L_0 * exp(t_bj * rT_j/3); % exponential growth as V1-morph
+    t_ji = tWw_T14(tWw_T14(:,1) >= tj,1); % selects times after metamorphosis
+    L_ji = L_i - (L_i - L_j) * exp( - rT_B * (t_ji - tj)); % cm, expected length at time
+    L = [L_bj; L_ji]; % catenate lengths
+  else 
+    L = L_i - (L_i - L_0) * exp( - rT_B * tWw_T14(:,1)); % cm, expected length at time
+  end
+  EWw_T14 = L.^3 * (1 + f_tW * w);
+
+
+  % time-length and time-weight at different food levels
+  % temperature profile from birth to start of experiment
+  T_tLWw_f = [repelem(9.6,129), 11.5 + (17-11.5) * [0:53]/53, repelem(16,90), 14 + (7.6 - 14) * [0:27]/27];
+  t0_tLWw_f = 300; % time since birth at start of experiment
+  f_init = 1;
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_init);
+  L_init = L_m * l_b;                  % cm, structural length at birth at f_init
+  E_init    = f_init * E_m * L_init^3; % J, energy in the body a birth at f_init
+% aT_b = tau_b/ k_M/ tempcorr(C2K(9.6), T_ref, T_A); % d, age at birth at f_init and T = 9.6°C
+
+  InitCond = [L_init; E_init; E_Hb; 0; 0]; % concatenate initial conditions
+  s_M  = L_j/ L_b; % -, acceleration factor
+  [t, LEHR] = ode45(@ode_LEHR, [0 t0_tLWw_f], InitCond,[], par, cPar, f_init, s_M, 0:t0_tLWw_f, T_tLWw_f);
+  
+  time = [0 28]; % d, time
+  % no food
+  LEHR_f0 = deval(ode45(@ode_LEHR, time, LEHR(end,:),[], par, cPar, f_tLWw_f0, s_M, 0:28, repelem(temp.tL_f0, 29)), time);
+  % unpack vars:
+  L    = LEHR_f0(1,:)';
+  E    = LEHR_f0(2,:)';
+  E_R  = LEHR_f0(4,:)';
+  % output
+  ELw_f0 = L / del_M; % cm, physical length
+  EWw_f0 = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, wet weight
+
+  % 25 percent food
+  LEHR_f25 = deval(ode45(@ode_LEHR, time, LEHR(end,:),[], par, cPar, f_tLWw_f25, s_M, 0:28, repelem(temp.tL_f25, 29)), time);
+  % unpack vars:
+  L    = LEHR_f25(1,:)';
+  E    = LEHR_f25(2,:)';
+  E_R  = LEHR_f25(4,:)';
+  % output
+  ELw_f25 = L / del_M; % cm, physical length
+  EWw_f25 = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, wet weight
+
+  % 50 percent food
+  LEHR_f50 = deval(ode45(@ode_LEHR, time, LEHR(end,:),[], par, cPar, f_tLWw_f50, s_M, 0:28, repelem(temp.tL_f50,29)), time);
+  % unpack vars:
+  L    = LEHR_f50(1,:)';
+  E    = LEHR_f50(2,:)';
+  E_R  = LEHR_f50(4,:)';
+  % output
+  ELw_f50 = L / del_M; % cm, physical length
+  EWw_f50 = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, wet weight
+
+  % 75 percent food
+  LEHR_f75 = deval(ode45(@ode_LEHR, time, LEHR(end,:),[], par, cPar, f_tLWw_f75, s_M, 0:28, repelem(temp.tL_f75,29)), time);
+  % unpack vars:
+  L    = LEHR_f75(1,:)';
+  E    = LEHR_f75(2,:)';
+  E_R  = LEHR_f75(4,:)';
+  % output
+  ELw_f75 = L / del_M; % cm, physical length
+  EWw_f75 = L.^3 + w_E/ mu_E/ d_E * (E + E_R); % g, wet weight
+
+  % 100 percent food
+  LEHR_f100 = deval(ode45(@ode_LEHR, time, LEHR(end,:),[], par, cPar, f_tLWw_f100, s_M, 0:28, repelem(temp.tL_f100,29)), time);
+  % unpack vars:
+  L    = LEHR_f100(1,:)';
+  E    = LEHR_f100(2,:)';
+  E_R  = LEHR_f100(4,:)';
+  % output
+  ELw_f100 = L ./ del_M; % cm, physical length
+  EWw_f100 = L.^3 + w_E/ mu_E/ d_E .* (E + E_R); % g, wet weight
+
+  % length-weight
+  EWw_parrs = (LWw_parrs(:,1) * del_M).^3 * (1 + f_LWw_parrs * ome); % g, wet weight
+  EWw_spawners = (LWw_spawners(:,1) * del_M).^3 * (1 + f_LWw_spawners * ome); % g, wet weight
+
+  % temperature-age at hatching
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_ah);
+  Eah = aUL(2,1) ./ TC_Tah; % d, age at hatch at f_ah and T
+  
+  % temperature-age at birth
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f_ab);
+  Eab = tau_b/ k_M ./ TC_Tab;   % d, age at birth at f_ab and T
+  
+  % pack to output
+  prdData.tL = ELw;
+  prdData.tL_f0 = ELw_f0;
+  prdData.tL_f25 = ELw_f25;
+  prdData.tL_f50 = ELw_f50;
+  prdData.tL_f75 = ELw_f75;
+  prdData.tL_f100 = ELw_f100;
+  prdData.tWw_f0 = EWw_f0;
+  prdData.tWw_f25 = EWw_f25;
+  prdData.tWw_f50 = EWw_f50;
+  prdData.tWw_f75 = EWw_f75;
+  prdData.tWw_f100 = EWw_f100;
+  prdData.tWwVe_T8 = EWw_e8;
+  prdData.tWwYe_T8 = EV_e8;
+  prdData.tWwVe_T10 = EWw_e10;
+  prdData.tWwYe_T10 = EV_e10;
+  prdData.tWwVe_T12 = EWw_e12;
+  prdData.tWwYe_T12 = EV_e12;
+  prdData.LWw_parrs = EWw_parrs;
+  prdData.LWw_spawners = EWw_spawners;
+  prdData.Tah = Eah;
+  prdData.Tab = Eab;
+  prdData.tWw_T4 = EWw_T4;
+  prdData.tWw_T6 = EWw_T6;
+  prdData.tWw_T8 = EWw_T8;
+  prdData.tWw_T10 = EWw_T10;
+  prdData.tWw_T14 = EWw_T14;
+  prdData.tWw_T18 = EWw_T18;
+
+end
+
+
+function dLEHR = ode_LEHR(t, LEHR, p, c, f, s_M, Tt, T)
+
+%
+% Input: 
+% p: structure 'par' 
+% c: structure 'Cpar' obtained by cPar = parscomp_st(par)
+% f: scaled, scaled functional response, 
+% s_M: scalar, -, acceleration factor post metamorphosis
+% T, scalar or function, -, temperature in K, constant or as a function of time
+
+% --------------- unpack LEHR ------------------------------------------
+L   =  max(0,LEHR(1)); % cm, volumetric structural length
+E   =  max(0,LEHR(2)); % J,   energy in reserve 
+EH  =  min(p.E_Hp,LEHR(3)); % J, E_H maturity
+ER  =  max(0,LEHR(4)); % J, E_R reproduction buffer
+ER1  =  max(0,LEHR(5)); % J, E_R reproduction buffer
+
+% Temperature correct the relevant paramters
+TC = tempcorr(interp1(Tt, T, t), p.T_ref, p.T_A);
+
+vT = p.v * TC; pT_M = p.p_M * TC; kT_J = p.k_J * TC; pT_Am = c.p_Am * TC;
+pA   = f * pT_Am * L^2 * s_M * (EH >= p.E_Hb);           % J/d, assimilation
+
+if EH < p.E_Hp % juveniles cannot cover somatic maintenance with the buffer   
+    r  = (E * vT * s_M/ L - pT_M * L^3/ p.kap)/ (E + p.E_G * L^3/ p.kap) * ...
+        (E >= pT_M * L^4/ (p.kap * vT * s_M)) + ...
+         (E * vT * s_M/ L - pT_M * L^3/ p.kap)/ (E + c.kap_G * p.E_G * L^3/ p.kap) ...
+         * (E < pT_M * L^4/ (p.kap * vT * s_M));
+
+pC   = E * (vT * s_M/ L - r); % J/d, mobilisation
+dE   = pA - pC;                                          % J/d, change in energy in reserve
+dL   = r/ 3 * L;                                         % cm/d, change in structural length
+dEH  = max(0, (1 - p.kap) * pC - kT_J * EH) * (EH < p.E_Hp);    % J/d, change in cum energy invested in maturation (it is implied here that no rejuvenation occurs).
+dER  = 0; 
+dER1 = 0;
+    
+else % EH = EHp: adults  
+    
+ pC = E * (p.E_G * vT * s_M * L^2 + pT_M * L^3)/ (p.kap * E + p.E_G * L^3);    
+ pCm  = c.E_m * (p.E_G * vT * L^2 + pT_M * L^3)/ (p.kap * c.E_m + p.E_G);
+   
+ 
+    if p.kap * pC >= pT_M * L^3   % enough energy in reserve to cover somatic maintenance and enough to make a batch   
+        r    = (E * vT * s_M/ L^4 - pT_M/ p.kap)/ (E/ L^3 + p.E_G/ p.kap); % d^-1, specific growth rate  
+        dE   = pA - pC;                                          % J/d, change in energy in reserve
+        dL   = r/ 3 * L;                                         % cm/d, change in structural length
+        dEH  = 0;    % J/d, change in cum energy invested in maturation (it is implied here that no rejuvenation occurs).
+        
+        % Buffer handling rules:
+        dER1 = p.kap_R *((1 - p.kap) * pCm - kT_J * p.E_Hp); % J/d, change in energy in ripe buffer
+        dER1 = max(0, dER1);
+        dER  = ((1 - p.kap) * pC - kT_J * p.E_Hp)  - dER1;       % J, change in cumulated energy invested in the unripe reproduction buffer
+%         dER  = dER * (ER > 0);
+   
+    else  % not enough energy in reserve to cover somatic maintenance
+
+        if ER > 0
+            r = 0;
+        else
+             r    =  (E * vT * s_M/ L - pT_M * L^3/ p.kap)/ ...
+            (E + c.kap_G * p.E_G  * L^3/ p.kap); % d^-1, specific growth rate
+   
+        end
+        dE   = pA - pC;                                         % J/d, change in energy in reserve
+        dL   = r/ 3 * L;                                        % cm/d, change in structural length
+        dEH  = 0;                                               % J/d, change in cum energy invested in maturation (it is implied here that no rejuvenation occurs).
+        dER  = (1 - p.kap) * pC - kT_J * p.E_Hp;
+        dER  = (dER  - (pT_M * L^3 - p.kap * pC)) * (ER > 0) ;
+        dER1 = 0;
+    
+    end
+     
+end
+ 
+
+% pack dLEHR
+dLEHR = [dL; dE; dEH; dER; dER1];    
+
+end
